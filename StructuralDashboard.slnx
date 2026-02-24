@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="StructuralDashboard.Api/StructuralDashboard.Api.csproj" />
+  <Project Path="StructuralDashboard.Shared/StructuralDashboard.Shared.csproj" />
+  <Project Path="StructuralDashboard/StructuralDashboard.Client/StructuralDashboard.Web.Client.csproj" />
+  <Project Path="StructuralDashboard/StructuralDashboard/StructuralDashboard.Web.csproj" />
+</Solution>

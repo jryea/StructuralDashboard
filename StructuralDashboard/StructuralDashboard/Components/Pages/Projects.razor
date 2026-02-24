@@ -1,0 +1,15 @@
+﻿@page "/projects"
+@inject IHttpClientFactory HttpClientFactory
+
+<h3>Projects</h3>
+<p>@message</p>
+
+@code {
+    private string message = "Loading...";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var client = HttpClientFactory.CreateClient("Api");
+        message = await client.GetStringAsync("/api/projects");
+    }
+}
