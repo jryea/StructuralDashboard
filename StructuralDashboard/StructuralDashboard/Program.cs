@@ -9,6 +9,8 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddMudServices();
 
+builder.Services.AddScoped<IProjectService, ProjectService>();
+
 builder.Services.AddHttpClient("Api", client =>
 {
     client.BaseAddress = new Uri("http://localhost:5182");

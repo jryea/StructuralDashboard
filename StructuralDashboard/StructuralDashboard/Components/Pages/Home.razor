@@ -1,37 +1,78 @@
 ﻿@page "/"
+@* Won't work without rendermode change *@
+@* Blazor Auto defaults to loading statically rendered pages from server *@
+@rendermode InteractiveServer
+@inject IProjectService ProjectService
 
 <MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
-    <MudGrid>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+    <h1>Projects</h1>
+    <MudGrid Class="mb-4">
+        <MudItem xs="3">
+            <MudTextField @bind-Value="_newProject.ProjectNumber"
+                          Label="Project Number" />
         </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="12" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6">
-            <MudGrid>
-                <MudItem xs="12">
-                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
-                </MudItem>
-                <MudItem xs="12">
-                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
-                </MudItem>
-            </MudGrid>
-        </MudItem>
-        <MudItem xs="12" sm="6">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%"></MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="12" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        <MudItem xs="6">
+            <MudTextField @bind-Value="_newProject.ProjectName"
+                          Label="Project Name" />
+        </MudItem> 
+        <MudItem xs="3">
+            <MudButton  Variant="Variant.Filled"
+                        Color="Color.Primary"
+                        OnClick="CreateProject">
+                Create Project
+            </MudButton>
         </MudItem>
     </MudGrid>
+    <MudTable Items="_projects" TotalItems="10" Hover="true" EditMode="TableEditMode.Row" CommittedItemChanges="OnCommittedItemChanges">
+        <HeaderContent>
+            <MudTh Style="width: 1%; white-space: nowrap;">Project Number</MudTh>
+            <MudTh>Project Name</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd Style="width: 1%; white-space: nowrap;">@context.ProjectNumber</MudTd>
+            <MudTd>@context.ProjectName</MudTd>
+            <MudTd Style="width: 1%; white-space: nowrap">  
+                <MudIconButton  Icon="@Icons.Material.Filled.Delete"
+                                Color="Color.Error"
+                                OnClick="() => DeleteProject(context)"/>
+            </MudTd>
+        </RowTemplate>
+        <RowEditingTemplate>
+            <MudTd>
+                <MudTextField @bind-Value="context.ProjectNumber" />
+            </MudTd>
+            <MudTd>
+                <MudTextField @bind-Value="context.ProjectName" />
+            </MudTd>
+        </RowEditingTemplate>
+    </MudTable>
 </MudContainer>
+
+@code {
+
+    private List<Project> _projects = new();
+    private Project _newProject = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _projects = await ProjectService.GetAllAsync();
+    }   
+
+    private async Task DeleteProject(Project project)
+    {
+        await ProjectService.DeleteAsync(project.ProjectNumber);
+        _projects = await ProjectService.GetAllAsync();
+    }
+
+    private async Task CreateProject()
+    {
+        // Send Project to API
+        await ProjectService.CreateAsync(_newProject);
+
+        // Refresh Projects 
+        _projects = await ProjectService.GetAllAsync();
+
+        // Clear form
+        _newProject = new Project();
+    }
+}
