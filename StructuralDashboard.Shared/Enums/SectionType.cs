@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Shared.Entities;
+﻿namespace StructuralDashboard.Shared.Enums;
 
 public enum SectionType
 {
@@ -9,3 +9,4 @@ public enum SectionType
     Rectangular,
     Undefined
 }
+

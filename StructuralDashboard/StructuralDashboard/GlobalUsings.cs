@@ -10,4 +10,4 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;  
 global using MudBlazor.Services;
 global using System.Net.Http;
-//global using System.Net.Http.Json;
+global using System.Net.Http.Json;
