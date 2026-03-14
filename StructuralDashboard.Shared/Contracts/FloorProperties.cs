@@ -6,7 +6,6 @@ namespace StructuralDashboard.Shared.Contracts
     {
         public string Id { get; set; }
         public string Name { get; set; }
-
         public string MaterialId { get; set; }
         public StructuralFloorType Type { get; set; }
         public ModelingType ModelingType { get; set; } = ModelingType.Membrane;

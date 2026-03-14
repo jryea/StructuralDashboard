@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StructuralDashboard.Api.Data;
 
@@ -11,9 +12,11 @@ using StructuralDashboard.Api.Data;
 namespace StructuralDashboard.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260314231317_ModelElements")]
+    partial class ModelElements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,7 +223,6 @@ namespace StructuralDashboard.Api.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DeckPropertiesId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("MaterialId")
@@ -939,8 +941,7 @@ namespace StructuralDashboard.Api.Migrations
                     b.HasOne("StructuralDashboard.Shared.Entities.DeckProperties", "DeckProperties")
                         .WithMany()
                         .HasForeignKey("DeckPropertiesId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("StructuralDashboard.Shared.Entities.Material", "Material")
                         .WithMany()
