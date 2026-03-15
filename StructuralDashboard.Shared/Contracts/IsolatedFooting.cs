@@ -8,7 +8,6 @@
         public double Thickness { get; set; }
         public Point Point { get; set; }
         public string LevelId { get; set; }
-        public string MaterialId { get; set; }
         public double Orientation { get; set; } = 0.0;
     }
 }
