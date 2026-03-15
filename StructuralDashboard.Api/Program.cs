@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
+using StructuralDashboard.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +41,7 @@ app.Use(async (context, next) =>
 // 4. Request Transformation
 // 5. Rate limiting
 
-app.MapEndpoints();
+app.MapProjectEndpoints();
+app.MapModelEndpoints();
 
 app.Run();

@@ -1,6 +1,4 @@
-﻿using StructuralDashboard.Shared.Contracts.Enums;
-
-namespace StructuralDashboard.Shared.Contracts
+﻿namespace StructuralDashboard.Shared.Contracts
 {
     public class Diaphragm
     {
