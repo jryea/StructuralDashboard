@@ -9,10 +9,13 @@ public class AppDbContext : DbContext
     {
         modelBuilder.Entity<Beam>().OwnsOne(b => b.StartPoint);
         modelBuilder.Entity<Beam>().OwnsOne(b => b.EndPoint);
+        modelBuilder.Entity<Beam>().OwnsOne(b => b.FrameModifiers);
         modelBuilder.Entity<Brace>().OwnsOne(b => b.StartPoint);
         modelBuilder.Entity<Brace>().OwnsOne(b => b.EndPoint);
+        modelBuilder.Entity<Brace>().OwnsOne(b => b.FrameModifiers);
         modelBuilder.Entity<Column>().OwnsOne(c => c.StartPoint);
         modelBuilder.Entity<Column>().OwnsOne(c => c.EndPoint);
+        modelBuilder.Entity<Column>().OwnsOne(c => c.FrameModifiers);
         modelBuilder.Entity<Wall>().OwnsOne(w => w.StartPoint);
         modelBuilder.Entity<Wall>().OwnsOne(w => w.EndPoint);
         modelBuilder.Entity<Grid>().OwnsOne(g => g.StartPoint);
@@ -26,6 +29,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<FrameProperties>().OwnsOne(fp => fp.ConcreteProps);
         modelBuilder.Entity<FrameProperties>().OwnsOne(fp => fp.SteelProps);
         modelBuilder.Entity<FrameProperties>().OwnsOne(fp => fp.WoodProps);
+        modelBuilder.Entity<FrameProperties>().OwnsOne(fp => fp.FrameModifiers);
 
         modelBuilder.Entity<Model>()
             .HasOne(m => m.Project)

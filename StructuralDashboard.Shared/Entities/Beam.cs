@@ -18,4 +18,5 @@ public class Beam
     public bool IsLateral { get; set; } 
     public string FramePropertiesId { get; set; } = null!;
     public FrameProperties FrameProperties { get; set; } = null!;
+    public FrameModifiers? FrameModifiers { get; set; }
 }

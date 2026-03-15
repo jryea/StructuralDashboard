@@ -13,5 +13,5 @@ public class FrameProperties
     public ConcreteFrameProperties? ConcreteProps { get; set; }
     public SteelFrameProperties? SteelProps { get; set; }
     public WoodFrameProperties? WoodProps { get; set; }
-    public FrameModifiers? FrameModifers { get; set; }
+    public FrameModifiers? FrameModifiers { get; set; }
 }
