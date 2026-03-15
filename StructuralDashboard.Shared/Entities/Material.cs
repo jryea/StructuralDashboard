@@ -6,9 +6,9 @@ namespace StructuralDashboard.Shared.Entities;
 public class Material
 {
     public string Id { get; set; } = string.Empty;
-    public string Name { get; set; } = string.Empty;
-    public string ModelId { get; set; } = string.Empty;
-    public Model Model { get; set; } = null;
+    public string Name { get; set; } = null!;
+    public string ModelId { get; set; } = null!;
+    public Model Model { get; set; } = null!;
     public DirectionalSymmetryType? DirectionalSymmetryType { get; set; }
     public MaterialType? MaterialType { get; set; }
     public double? WeightPerUnitVolume { get; set; }
