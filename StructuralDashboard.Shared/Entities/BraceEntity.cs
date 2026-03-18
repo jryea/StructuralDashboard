@@ -4,7 +4,7 @@ public class BraceEntity
 {
     public string Id { get; set; } = string.Empty;
     public string ModelId { get; set; } = null!;
-    public ModelEntity Model { get; set; } = null!;
+    public StructuralModelEntity Model { get; set; } = null!;
     public string BaseLevelId { get; set; } = null!;
     public LevelEntity BaseLevel { get; set; } = null!;
     public string TopLevelId { get; set; } = null!;

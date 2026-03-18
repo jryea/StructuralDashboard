@@ -7,7 +7,7 @@ public class MaterialEntity
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = null!;
     public string ModelId { get; set; } = null!;
-    public ModelEntity Model { get; set; } = null!;
+    public StructuralModelEntity Model { get; set; } = null!;
     public DirectionalSymmetryType? DirectionalSymmetryType { get; set; }
     public MaterialType? MaterialType { get; set; }
     public double? WeightPerUnitVolume { get; set; }

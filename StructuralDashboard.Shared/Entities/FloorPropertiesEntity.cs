@@ -5,8 +5,7 @@ public class FloorPropertiesEntity
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = null!;
     public string ModelId { get; set; } = null!; 
-    public ModelEntity Model { get; set; } = null!;   
-
+    public StructuralModelEntity Model { get; set; } = null!;   
     public string MaterialId { get; set; } = null!;
     public MaterialEntity Material { get; set; } = null!;
     public StructuralFloorType Type { get; set; }

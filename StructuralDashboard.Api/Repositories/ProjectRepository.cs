@@ -1,5 +1,7 @@
 ﻿namespace StructuralDashboard.Api.Repositories;
 
+// Repositories translate models to entities
+
 public class ProjectRepository : IProjectRepository
 {
     private readonly AppDbContext _context;
@@ -9,10 +11,16 @@ public class ProjectRepository : IProjectRepository
         _context = context;
     }
 
-    public async Task CreateProjectAsync(ProjectEntity project)
+    public async Task CreateProjectAsync(Project project)
     {
+        var entity = new ProjectEntity()
+        {
+            ProjectNumber = project.ProjectNumber,
+            ProjectName = project.ProjectName
+        };
+
         // Add project to DB
-        _context.Projects.Add(project);
+        _context.Projects.Add(entity);
 
         // Save changes to Db
         await _context.SaveChangesAsync();
@@ -31,34 +39,45 @@ public class ProjectRepository : IProjectRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<ProjectEntity>> GetProjectsAsync()
+    public async Task<List<Project>> GetAllProjectsAsync()
     {
         // Get all projects from db
         var projects = await _context.Projects.ToListAsync();
 
-        // Return projects or empty list if null
-        return projects;
+        return projects.Select(x => new Project()
+        {
+            ProjectName = x.ProjectName,
+            ProjectNumber = x.ProjectNumber
+        }).ToList();
     }
+    
 
-    public async Task<ProjectEntity?> GetProjectAsync(string projectNumber)
+    public async Task<Project?> GetProjectAsync(string projectNumber)
     {
         // get project from db
-        var project = await _context.Projects.FindAsync(projectNumber);
+        var entity = await _context.Projects.FindAsync(projectNumber);
 
         // return project from db
-        return project;
+        if (entity is null) return null;
+
+        return new Project()
+        {
+            ProjectNumber = entity.ProjectNumber,
+            ProjectName = entity.ProjectName
+        };
     }
 
-    public async Task UpdateProjectAsync(ProjectEntity updatedProject)
+    public async Task UpdateProjectAsync(Project project)
     {
         // Get project number
-        var projectNumber = updatedProject.ProjectNumber;
+        var projectNumber = project.ProjectNumber;
 
         // Get project
-        var project = await _context.Projects.FindAsync(projectNumber);
+        var entity = await _context.Projects.FindAsync(projectNumber);
 
         // Update project
-        project?.ProjectName = updatedProject.ProjectName;
+        if (entity is null) return;
+        entity.ProjectName = project.ProjectName;
 
         // Save db w changes
         await _context.SaveChangesAsync();

@@ -31,7 +31,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<FramePropertiesEntity>().OwnsOne(fp => fp.WoodProps);
         modelBuilder.Entity<FramePropertiesEntity>().OwnsOne(fp => fp.FrameModifiers);
 
-        modelBuilder.Entity<ModelEntity>()
+        modelBuilder.Entity<StructuralModelEntity>()
             .HasOne(m => m.Project)
             .WithMany()
             .HasForeignKey(m => m.ProjectNumber);
@@ -49,9 +49,8 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
-
     public DbSet<ProjectEntity> Projects { get; set; } 
-    public DbSet<ModelEntity> Models { get; set; }
+    public DbSet<StructuralModelEntity> Models { get; set; }
     public DbSet<LevelEntity> Levels { get; set; }
     public DbSet<GridEntity> Grids { get; set; }
     public DbSet<BeamEntity> Beams { get; set; }

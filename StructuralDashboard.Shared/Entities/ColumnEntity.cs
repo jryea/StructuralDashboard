@@ -4,7 +4,7 @@ public class ColumnEntity
 {
     public string Id { get; set; } = string.Empty;
     public string ModelId { get; set; } = null!;
-    public ModelEntity Model { get; set; } = null!;
+    public StructuralModelEntity Model { get; set; } = null!;
     public Point StartPoint { get; set; } = null!;
     public Point EndPoint { get; set; } = null!;
     public string BaseLevelId { get; set; } = null!;

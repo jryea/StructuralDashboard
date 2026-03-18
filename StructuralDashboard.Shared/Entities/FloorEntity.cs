@@ -4,7 +4,7 @@ public class FloorEntity
 {
     public string Id { get; set; } = string.Empty;
     public string ModelId { get; set; } = null!;
-    public ModelEntity Model { get; set; } = null!;
+    public StructuralModelEntity Model { get; set; } = null!;
     public string LevelId { get; set; } = null!;
     public LevelEntity Level { get; set; } = null!;
     public string FloorPropertiesId { get; set; } = null!;

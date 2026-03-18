@@ -1,6 +1,6 @@
 ﻿namespace StructuralDashboard.Shared.Contracts
 {
-    public class BaseModel
+    public class StructuralModel
     {
         public string Id { get; set; }
         public ElementContainer Elements { get; set; } = new ElementContainer();

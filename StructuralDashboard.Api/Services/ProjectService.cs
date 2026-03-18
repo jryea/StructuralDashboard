@@ -10,36 +10,27 @@ public class ProjectService : IProjectService
     }
     public async Task<Project?> GetProjectAsync(string projectNumber)
     {
-        // Get ProjectEntity from repository
-        var entity = await _repository.GetProjectAsync(projectNumber);
-        if (entity is null) return null;
-
-        // Map ProjectEntity to Project domain model
-        return new Project()
-        {
-            ProjectNumber = entity.ProjectNumber,
-            ProjectName = entity.ProjectName
-        };
+        return await _repository.GetProjectAsync(projectNumber);
     }
 
-    public Task CreateProjectAsync(Project project)
+    public async Task CreateProjectAsync(Project project)
     {
-        throw new NotImplementedException();
+       await _repository.CreateProjectAsync(project);
     }
 
-    public Task DeleteProjectAsync(string projectNumber)
+    public async Task DeleteProjectAsync(string projectNumber)
     {
-        throw new NotImplementedException();
+        await _repository.DeleteProjectAsync(projectNumber);
     }
 
 
-    public Task<List<Project>> GetProjectsAsync()
+    public async Task<List<Project>> GetAllProjectsAsync()
     {
-        throw new NotImplementedException();
+        return await _repository.GetAllProjectsAsync();
     }
 
-    public Task UpdateProjectAsync(Project project)
+    public async Task UpdateProjectAsync(Project project)
     {
-        throw new NotImplementedException();
+        await _repository.UpdateProjectAsync(project);  
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace StructuralDashboard.Shared.Entities;
 
-public class ModelEntity
+public class StructuralModelEntity
 {
     public string Id { get; set; } = string.Empty;
     public string ModelName { get; set; } = null!;
