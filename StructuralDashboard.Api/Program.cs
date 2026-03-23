@@ -7,8 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// AddDbContext automatically uses Scoped - per http request
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IStructuralModelRepository, StructuralModelRepository>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IStructuralModelService, StructuralModelService>();
 
 var app = builder.Build();
 
@@ -42,6 +48,6 @@ app.Use(async (context, next) =>
 // 5. Rate limiting
 
 app.MapProjectEndpoints();
-app.MapModelEndpoints();
+app.MapStructuralModelEndpoints();
 
 app.Run();

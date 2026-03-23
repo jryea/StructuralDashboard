@@ -13,48 +13,27 @@ public static class ProjectEndpoints
         group.MapDelete("/{projectNumber}", DeleteProject);
     }
 
-    private static async Task<IResult> DeleteProject(string projectNumber, AppDbContext db)
+    private static async Task<IResult> DeleteProject(string projectNumber, IProjectService projectService)
     {
-        // Get project
-        var project = await db.Projects.FindAsync(projectNumber);
-        if (project is null) return Results.NotFound();
-
-        // Remove project
-        db.Projects.Remove(project);
-
-        // Save changes
-        await db.SaveChangesAsync();
-
-        // Return results
+        await projectService.DeleteProjectAsync(projectNumber);
         return Results.NoContent();
     }
 
-    private static async Task<IResult> UpdateProject(string projectNumber, Project updated, AppDbContext db)
+    private static async Task<IResult> UpdateProject(Project updated, IProjectService projectService)
     {
-        // Get project
-        var project = await db.Projects.FindAsync(projectNumber);
-        if (project is null) return Results.NotFound();
-
-        // UPdate project
-        project.ProjectName = updated.ProjectName;
-
-        // save project
-        await db.SaveChangesAsync();
-
-        // return results
-        // 204 NoContent is the convention for a succcessful update w nothing to return
+        await projectService.UpdateProjectAsync(updated);
         return Results.NoContent();
     }
 
-    private static async Task<IResult> GetAllProjects(AppDbContext db)
+    private static async Task<IResult> GetAllProjects(IProjectService projectService)
     {
-        var projects = await db.Projects.ToListAsync();
+        var projects = await projectService.GetAllProjectsAsync();
         return Results.Ok(projects);
     }
 
-    private static async Task<IResult> GetProject(string projectNumber, AppDbContext db)
+    private static async Task<IResult> GetProject(string projectNumber, IProjectService projectService)
     {
-        var project = await db.Projects.FindAsync(projectNumber);
+        var project = await projectService.GetProjectAsync(projectNumber);
 
         if (project != null)
         {
@@ -64,13 +43,9 @@ public static class ProjectEndpoints
         return Results.NotFound();
     }
 
-    private static async Task<IResult> CreateProject(Project project, AppDbContext db)
+    private static async Task<IResult> CreateProject(Project project, IProjectService projectService)
     {
-        // add the project to the DB, similiar to Git staging
-        db.Projects.Add(project);
-
-        // save the changes to the DB, commits to the DB
-        await db.SaveChangesAsync();
+        await projectService.CreateProjectAsync(project);
 
         return Results.Created($"/api/projects/{project.ProjectNumber}", project);
     }
