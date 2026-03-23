@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Api.Repositories.StructuralModel;
+﻿namespace StructuralDashboard.Api.Repositories.ModelData;
 
 public class GridData
 {
@@ -25,7 +25,7 @@ public class GridData
         return grids;
     }
 
-    public async Task SaveGridsAsync(string modelId, List<Grid> grids)
+    public void SaveGrids(string modelId, List<Grid> grids)
     {
         var entities = grids.Select(g => new GridEntity
         {

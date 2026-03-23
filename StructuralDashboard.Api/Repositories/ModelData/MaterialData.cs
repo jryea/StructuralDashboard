@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Api.Repositories.StructuralModel;
+﻿namespace StructuralDashboard.Api.Repositories.ModelData;
 
 public class MaterialData
 {
@@ -24,7 +24,7 @@ public class MaterialData
         return materials;
     }
 
-    public async Task SaveMaterialsAsync(string modelId, List<Material> materials)
+    public void SaveMaterials(string modelId, List<Material> materials)
     {
         // Convert materials to entities
         var entities = materials.Select(m => new MaterialEntity

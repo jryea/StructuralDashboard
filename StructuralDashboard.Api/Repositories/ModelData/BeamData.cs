@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Api.Repositories.StructuralModel;
+﻿namespace StructuralDashboard.Api.Repositories.ModelData;
 
 public class BeamData
 {
@@ -28,7 +28,7 @@ public class BeamData
         return beams;
     }
 
-    public async Task SaveBeamsAsync(string modelId, List<Beam> beams)
+    public void SaveBeams(string modelId, List<Beam> beams)
     {
         var entities = beams.Select(b => new BeamEntity
         {

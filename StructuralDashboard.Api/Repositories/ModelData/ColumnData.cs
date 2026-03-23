@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Api.Repositories.StructuralModel;
+﻿namespace StructuralDashboard.Api.Repositories.ModelData;
 
 public class ColumnData
 {
@@ -29,7 +29,7 @@ public class ColumnData
         return columns;
     }
 
-    public async Task SaveColumnsAsync(string modelId, List<Column> columns)
+    public void SaveColumns(string modelId, List<Column> columns)
     {
         var entities = columns.Select(c => new ColumnEntity
         {

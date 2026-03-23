@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Api.Repositories.StructuralModel;
+﻿namespace StructuralDashboard.Api.Repositories.ModelData;
 
 public class LevelData
 {
@@ -24,7 +24,7 @@ public class LevelData
         return levels;
     }
 
-    public async Task SaveLevelsAsync(string modelId, List<Level> levels)
+    public void SaveLevels(string modelId, List<Level> levels)
     {
         var entities = levels.Select(l => new LevelEntity
         {

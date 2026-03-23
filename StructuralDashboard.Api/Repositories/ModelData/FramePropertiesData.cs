@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Api.Repositories.StructuralModel;
+﻿namespace StructuralDashboard.Api.Repositories.ModelData;
 
 public class FramePropertiesData
 {
@@ -24,7 +24,7 @@ public class FramePropertiesData
         return frameProperties;
     }
 
-    public async Task SaveFramePropertiesAsync(string modelId, List<FrameProperties> frameProperties)
+    public void SaveFrameProperties(string modelId, List<FrameProperties> frameProperties)
     {
         var entities = frameProperties.Select(fp => new FramePropertiesEntity
         {

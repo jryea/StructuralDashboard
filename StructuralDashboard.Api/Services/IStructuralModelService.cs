@@ -1,10 +1,10 @@
-﻿namespace StructuralDashboard.Api.Repositories;
+﻿namespace StructuralDashboard.Api.Services;
 
-public interface IStructuralModelRepository
+public interface IStructuralModelService
 {
     Task<List<StructuralModel>> GetAllModelsAsync(string projectNumber);
-    Task<StructuralModel> GetModelAsync(string id);
+    Task<StructuralModel?> GetModelAsync(string modelId);
     Task CreateModelAsync(StructuralModel model, string projectNumber);
-    Task DeleteModelAsync(string id);
     Task UpdateModelAsync(StructuralModel model);
+    Task DeleteModelAsync(string modelId);
 }
