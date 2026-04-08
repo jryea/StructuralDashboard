@@ -2,6 +2,7 @@
 @* Won't work without rendermode change *@
 @* Blazor Auto defaults to loading statically rendered pages from server *@
 @rendermode InteractiveServer
+@inject IDialogService DialogService
 @inject IProjectService ProjectService
 
 <MudContainer Class="mt-16 px-8" MaxWidth="MaxWidth.False">
@@ -23,7 +24,7 @@
             </MudButton>
         </MudItem>
     </MudGrid>
-    <MudTable Items="_projects" TotalItems="10" Hover="true" EditMode="TableEditMode.Row" CommittedItemChanges="OnCommittedItemChanges">
+    <MudTable Items="_projects" TotalItems="10" Hover="true">
         <HeaderContent>
             <MudTh Style="width: 1%; white-space: nowrap;">Project Number</MudTh>
             <MudTh>Project Name</MudTh>
@@ -31,20 +32,18 @@
         <RowTemplate>
             <MudTd Style="width: 1%; white-space: nowrap;">@context.ProjectNumber</MudTd>
             <MudTd>@context.ProjectName</MudTd>
+            <MudTd Style="width: 1%; white-space: nowrap">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                               Color="Color.Primary"
+                               OnClick = "() => EditProject(context)"
+                              />
+            </MudTd>
             <MudTd Style="width: 1%; white-space: nowrap">  
                 <MudIconButton  Icon="@Icons.Material.Filled.Delete"
                                 Color="Color.Error"
                                 OnClick="() => DeleteProject(context)"/>
             </MudTd>
         </RowTemplate>
-        <RowEditingTemplate>
-            <MudTd>
-                <MudTextField @bind-Value="context.ProjectNumber" />
-            </MudTd>
-            <MudTd>
-                <MudTextField @bind-Value="context.ProjectName" />
-            </MudTd>
-        </RowEditingTemplate>
     </MudTable>
 </MudContainer>
 
@@ -73,5 +72,11 @@
 
         // Clear form
         _newProject = new Project();
+    }
+
+    private Task EditProject(Project project)
+    {
+        var options = new DialogOptions { CloseOnEscapeKey = true };
+        return DialogService.ShowAsync<EditProjectDialog>("Edit Project", options);
     }
 }

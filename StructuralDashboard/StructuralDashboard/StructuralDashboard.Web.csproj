@@ -13,5 +13,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.3" />
     <PackageReference Include="MudBlazor" Version="9.0.0" />
   </ItemGroup>
+<ItemGroup>
+	<StaticWebAsset Update="wwwroot/render-host.js" Fingerprint="false" />
+	<StaticWebAsset Update="wwwroot/renderers/konva-renderer.js" Fingerprint="false" />
+</ItemGroup>
+<ItemGroup>
+  <Folder Include="Data\SampleModels\" />
+</ItemGroup>
 
 </Project>

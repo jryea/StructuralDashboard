@@ -1,0 +1,16 @@
+﻿@page "/plan"
+@rendermode InteractiveServer
+@inject IWebHostEnvironment Env
+
+<StructuralCanvas Model = "_model"/>
+
+@code {
+    private PlanViewModel _model = new PlanViewModel();
+
+    protected override void OnInitialized()
+    {
+        var path = Path.Combine(Env.ContentRootPath, "Data", "SampleModels", "BeamsAndLevels.json");
+        var structuralModel = ModelLoaderService.LoadFromFile(path);
+        _model = structuralModel.ConvertToPlanViewModel("LV-002e0674");
+    }
+}

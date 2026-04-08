@@ -1,6 +1,4 @@
-﻿
-
-namespace StructuralDashboard.Api.Services;
+﻿namespace StructuralDashboard.Web.Services;
 
 public interface IProjectService
 {

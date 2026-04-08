@@ -1,4 +1,6 @@
-﻿namespace StructuralDashboard.Api.Services;
+﻿using System.Net.Http.Json;
+
+namespace StructuralDashboard.Web.Services;
 
 public class ProjectService : IProjectService
 {
