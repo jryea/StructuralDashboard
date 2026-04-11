@@ -24,20 +24,17 @@ export function render(model) {
     (x) => x.type === 'beam' || x.type === 'joist',
   );
   const columns = model.members.filter((x) => x.type === 'column');
+  const grids = model.members.filter((x) => x.type === 'grid');
 
-  const beamLines = beams.map((b) => {
-    return new Konva.Line({
-      points: [b.x1, b.y1, b.x2, b.y2],
-      stroke: 'white',
-      strokeWidth: b.type == 'beam' ? 4 : 2,
-      opacity: 0.7,
-    });
-  });
-
+  const beamLines = beams.map((b) => createBeam(b));
+  const columnRects = columns.map((c) => createColumn(c));
   const beamTags = beams.map((b) => createBeamTag(b));
+  const gridLines = grids.map((g) => createGrid(g));
 
   beamLines.forEach((b) => layer.add(b));
   beamTags.forEach((b) => layer.add(b));
+  columnRects.forEach((c) => layer.add(c));
+  gridLines.forEach((g) => layer.add(g));
 
   fitToCanvas(model);
 }
@@ -94,11 +91,20 @@ function addZoom(stage) {
   });
 }
 
+function createBeam(beam) {
+  return new Konva.Line({
+    points: [beam.x1, beam.y1, beam.x2, beam.y2],
+    stroke: 'white',
+    strokeWidth: beam.type == 'beam' ? 4 : 2,
+    opacity: 0.7,
+  });
+}
+
 function createBeamTag(beam) {
   const tag = new Konva.Text({
     x: beam.tagX,
     y: beam.tagY,
-    text: beam.size,
+    text: beam.label,
     rotation: beam.tagRotation,
     fontSize: 14,
     scaleX: -1,
@@ -112,8 +118,8 @@ function createBeamTag(beam) {
 
 function createColumn(column) {
   const rect = new Konva.Rect({
-    x: column.x1,
-    y: column.y1,
+    x: column.x1 - 4,
+    y: column.y1 - 4,
     width: 8,
     height: 8,
     stroke: 'white',
@@ -121,6 +127,62 @@ function createColumn(column) {
     opacity: 0.7,
     rotation: column.rotation,
   });
-
   return rect;
+}
+
+function createGrid(grid) {
+  const line = new Konva.Line({
+    points: [grid.x1, grid.y1, grid.x2, grid.y2],
+    stroke: 'white',
+    strokeWidth: 1,
+    dash: [4, 4],
+    opacity: 0.7,
+  });
+
+  const bubbleStart = new Konva.Circle({
+    x: grid.x1,
+    y: grid.y1,
+    radius: 24,
+    stroke: 'white',
+    strokeWidth: 1,
+    opacity: 0.7,
+  });
+  const bubbleEnd = new Konva.Circle({
+    x: grid.x2,
+    y: grid.y2,
+    radius: 24,
+    stroke: 'white',
+    strokeWidth: 1,
+    opacity: 0.7,
+  });
+  const gridBubbleTextStart = new Konva.Text({
+    x: grid.x1,
+    y: grid.y1,
+    text: grid.label,
+    fontSize: 14,
+    fill: 'white',
+    scaleY: -1,
+  });
+  const gridBubbleTextEnd = new Konva.Text({
+    x: grid.x2,
+    y: grid.y2,
+    text: grid.label,
+    fontSize: 14,
+    fill: 'white',
+    scaleY: -1,
+  });
+
+  gridBubbleTextStart.offsetX(gridBubbleTextStart.width() / 2);
+  gridBubbleTextStart.offsetY(gridBubbleTextStart.height() / 2);
+  gridBubbleTextEnd.offsetX(gridBubbleTextEnd.width() / 2);
+  gridBubbleTextEnd.offsetY(gridBubbleTextEnd.height() / 2);
+
+  const group = new Konva.Group();
+  group.add(line);
+  group.add(bubbleStart);
+  group.add(bubbleEnd);
+  group.add(gridBubbleTextStart);
+  group.add(gridBubbleTextEnd);
+
+  return group;
 }

@@ -10816,7 +10816,2384 @@
       }
     ],
     "braces": [],
-    "columns": [],
+    "columns": [
+      {
+        "id": "COL-0f6f3871",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": -693.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4ded3d40",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-f46ef16e",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": -693.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-dbb3092d",
+        "startPoint": {
+          "x": -895.98334,
+          "y": -693.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-1e162ee2",
+        "startPoint": {
+          "x": -895.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-487b1cef",
+        "startPoint": {
+          "x": -895.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": -693.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0323b435",
+        "startPoint": {
+          "x": -523.98334,
+          "y": -693.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-baf62200",
+        "startPoint": {
+          "x": -523.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-b5e170ab",
+        "startPoint": {
+          "x": -523.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": -693.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a1f523a4",
+        "startPoint": {
+          "x": -151.98334,
+          "y": -693.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-cadc333b",
+        "startPoint": {
+          "x": -151.98334,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-f7268a72",
+        "startPoint": {
+          "x": -151.98334,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": -693.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-ff39924e",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -693.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-ffa19a72",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -693.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-87d3b143",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -693.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -693.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-cb547ab5",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -367.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-93431879",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a94ddf2d",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -367.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0e72af69",
+        "startPoint": {
+          "x": 484.01666,
+          "y": -367.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-255ff95a",
+        "startPoint": {
+          "x": 484.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-9b399fc2",
+        "startPoint": {
+          "x": 484.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": -367.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-cda2a529",
+        "startPoint": {
+          "x": 856.01666,
+          "y": -367.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-f1473403",
+        "startPoint": {
+          "x": 856.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0dc04ace",
+        "startPoint": {
+          "x": 856.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": -367.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-2b57f94b",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": -367.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-b45e6015",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-359f67da",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": -367.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-40cff75e",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": -367.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-ad9ab9ae",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": -367.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-830580a3",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": -367.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": -367.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-00fd2566",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": -273.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-5a08bdf2",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-5972ec75",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": -273.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0b48f6da",
+        "startPoint": {
+          "x": -895.98334,
+          "y": -273.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-097f4757",
+        "startPoint": {
+          "x": -895.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-37a680ca",
+        "startPoint": {
+          "x": -895.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": -273.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-12de8ec3",
+        "startPoint": {
+          "x": -523.98334,
+          "y": -273.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-e5d89fed",
+        "startPoint": {
+          "x": -523.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-8556b118",
+        "startPoint": {
+          "x": -523.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": -273.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-1500c08f",
+        "startPoint": {
+          "x": -151.98334,
+          "y": -273.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-7ee2edf6",
+        "startPoint": {
+          "x": -151.98334,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-2aa65591",
+        "startPoint": {
+          "x": -151.98334,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": -273.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-8daeee41",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -273.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4008eba4",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -273.72351,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-00a5d794",
+        "startPoint": {
+          "x": 112.01666,
+          "y": -273.72351,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -273.72351,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4f5b8e7a",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-6454d3f6",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-30d7307b",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-1c48a74a",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4d402457",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-e5fed47c",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-b6343ef3",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-97551d27",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-15f2bafc",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-04e76120",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-3139aa32",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-096eb205",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-28b377d0",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-04f9bc30",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-6a70bff9",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-1f2abb0b",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-6c8213cf",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0df9aded",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-8a6cd711",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a057bfba",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0d65fbb1",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-c15abaf0",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-743e56df",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-ef090d97",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-b01f86ea",
+        "startPoint": {
+          "x": 1592.01666,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1592.01666,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-b2d78cae",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 14.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.9999999999995,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-361bd2c3",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 14.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 14.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.9999999999995,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-8a7c70d2",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-abec19ef",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a661013f",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-f9eedeed",
+        "startPoint": {
+          "x": -1075.98334,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1075.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.9999999999995,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-e28a4f6c",
+        "startPoint": {
+          "x": -1075.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -1075.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.9999999999995,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-35397c20",
+        "startPoint": {
+          "x": -1075.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -1075.98334,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.9999999999995,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-fb9b8491",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4e4fee22",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-3bdbced8",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-67b6d94d",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-db76737c",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-1870930d",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-afe19f67",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-24ad94d0",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-17ffb743",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-69f19491",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0e68d343",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-e5ca977a",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-f2ec7e54",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-359de860",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-e987a503",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a1becc79",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4442f2ea",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-b60cd82e",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-51df25ed",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-5428d7ab",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-56f2fbda",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-6416b5e2",
+        "startPoint": {
+          "x": 1592.01666,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1592.01666,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-cc3cdff0",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 136.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4e60ddfb",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 136.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 136.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-d9b4628a",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 232.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 232.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-fcd4dd11",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 232.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 232.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-c3dbb9fb",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 232.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 232.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-19167ad2",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 420.77649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 420.77649,
+          "z": 0.0
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-dada8d71",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-24b96faa",
+        "isLateral": false
+      },
+      {
+        "id": "COL-1c3f7993",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-865030fb",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a5bfcaee",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 484.27649,
+          "z": 0.0
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-4f577110",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-e36a83dd",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-8015ddbc",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-cc8b1770",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-46b0beea",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-f9378cf8",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-2e123c19",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-10e8a912",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a4262420",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-d3abfcf5",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.99999999999982,
+        "framePropertiesId": "FRP-83784ab7",
+        "isLateral": false
+      },
+      {
+        "id": "COL-0f725d74",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 496.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-168ad6b5",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-ed2aef13",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-3769db9d",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 496.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-1b10b461",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-a009b9bd",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-d28f0864",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 496.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-dc0c367d",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-8bf56e09",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 179.99999999999972,
+        "framePropertiesId": "FRP-23ae7a24",
+        "isLateral": false
+      },
+      {
+        "id": "COL-2b22b133",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 496.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "baseLevelId": "LV-46de85c2",
+        "topLevelId": "LV-002e0674",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-82f1f5cf",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 496.27649,
+          "z": 174.99999999992465
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "baseLevelId": "LV-002e0674",
+        "topLevelId": "LV-dfcfa1ac",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      },
+      {
+        "id": "COL-eae79abe",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 496.27649,
+          "z": 343.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": 496.27649,
+          "z": 510.00000000000705
+        },
+        "baseLevelId": "LV-dfcfa1ac",
+        "topLevelId": "LV-5c8bcd40",
+        "orientation": 89.9999999999996,
+        "framePropertiesId": "FRP-a6ccc1c5",
+        "isLateral": false
+      }
+    ],
     "isolatedFootings": [],
     "openings": []
   },
@@ -10833,7 +13210,204 @@
     "frameProperties": []
   },
   "modelLayout": {
-    "grids": [],
+    "grids": [
+      {
+        "id": "GR-96acb655",
+        "name": "1.ORTHO",
+        "startPoint": {
+          "x": 1776.501226,
+          "y": 496.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1567.577494,
+          "y": 496.27649,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-53ebca02",
+        "name": "5.ORTHO",
+        "startPoint": {
+          "x": 1776.501226,
+          "y": 136.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1567.577494,
+          "y": 136.27649,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-722c8c6e",
+        "name": "6.ORTHO",
+        "startPoint": {
+          "x": 1776.501226,
+          "y": 14.27649,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1567.577494,
+          "y": 14.27649,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-2fd4205d",
+        "name": "A.ORTHO",
+        "startPoint": {
+          "x": -1267.98334,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1267.98334,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-d223c957",
+        "name": "C.ORTHO",
+        "startPoint": {
+          "x": -895.98334,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -895.98334,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-dd75c59a",
+        "name": "D.ORTHO",
+        "startPoint": {
+          "x": -523.98334,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -523.98334,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-d4add25a",
+        "name": "E.ORTHO",
+        "startPoint": {
+          "x": -151.98334,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -151.98334,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-a0ecdcf8",
+        "name": "F.ORTHO",
+        "startPoint": {
+          "x": 112.01666,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 112.01666,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-814aa446",
+        "name": "G.ORTHO",
+        "startPoint": {
+          "x": 484.01666,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 484.01666,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-93b94fe1",
+        "name": "H.ORTHO",
+        "startPoint": {
+          "x": 856.01666,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 856.01666,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-d4f1dffb",
+        "name": "I.ORTHO",
+        "startPoint": {
+          "x": 1228.01666,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1228.01666,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-a5e9315a",
+        "name": "K.ORTHO",
+        "startPoint": {
+          "x": 1600.01666,
+          "y": 795.035205,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": 1600.01666,
+          "y": -1060.726318,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-aa9abb5c",
+        "name": "8.ORTHO",
+        "startPoint": {
+          "x": 1776.501226,
+          "y": -273.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1567.577494,
+          "y": -273.72351,
+          "z": 0.0
+        }
+      },
+      {
+        "id": "GR-06748b5a",
+        "name": "10.ORTHO",
+        "startPoint": {
+          "x": 1776.501226,
+          "y": -693.72351,
+          "z": 0.0
+        },
+        "endPoint": {
+          "x": -1567.577494,
+          "y": -693.72351,
+          "z": 0.0
+        }
+      }
+    ],
     "levels": [
       {
         "id": "LV-46de85c2",

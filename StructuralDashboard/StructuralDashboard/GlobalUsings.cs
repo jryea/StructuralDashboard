@@ -14,5 +14,4 @@ global using Microsoft.Extensions.Hosting;
 global using MudBlazor.Services;
 global using System.Net.Http;
 global using StructuralDashboard.Web.Components;
-global using StructuralDashboard.Web.Rendering;
 global using StructuralDashboard.Web.Services;

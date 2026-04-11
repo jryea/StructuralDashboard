@@ -11,12 +11,15 @@ public static class PlanViewModelMapper
 
         var beams = structuralModel.Elements.Beams.Where(b => b.LevelId == levelId);
         var columns = structuralModel.Elements.Columns.Where(c => c.TopLevelId == levelId);
+        var grids = structuralModel.ModelLayout.Grids;
 
         var planBeams = beams.Select(b => b.ConvertToPlanMember()).ToList();
         var planColumns = columns.Select(c => c.ConvertToPlanMember()).ToList();
+        var planGrids = grids.Select(g => g.ConvertToPlanMember()).ToList();
 
         members.AddRange(planBeams);
         members.AddRange(planColumns);
+        members.AddRange(planGrids);
 
         if (planBeams == null || planBeams.Count() == 0) return new PlanViewModel() {LevelId = levelId};
         var extents = GetExtents(planBeams);
@@ -58,7 +61,7 @@ public static class PlanViewModelMapper
             Y1 = beam.StartPoint.Y + uy * ENDPOINT_OFFSET,
             X2 = beam.EndPoint.X - ux * ENDPOINT_OFFSET,
             Y2 = beam.EndPoint.Y - uy * ENDPOINT_OFFSET,
-            Size = "W12x35",
+            Label = "W12x35",
             TagX = labelProps.TagX,
             TagY = labelProps.TagY,
             TagRotation = labelProps.TagRotation,
@@ -77,6 +80,20 @@ public static class PlanViewModelMapper
             X2 = 0,
             Y2 = 0,
             Orientation = column.Orientation
+        };
+    }
+
+    public static PlanMember ConvertToPlanMember(this Grid grid)
+    {
+        return new PlanMember()
+        {
+            Id = grid.Id,
+            Type = "grid",
+            X1 = grid.StartPoint.X,
+            Y1 = grid.StartPoint.Y,
+            X2 = grid.EndPoint.X,
+            Y2 = grid.EndPoint.Y,
+            Label = grid.Name,
         };
     }
 

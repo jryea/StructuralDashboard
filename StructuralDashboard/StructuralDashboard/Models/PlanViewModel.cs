@@ -20,7 +20,7 @@ public class PlanMember
     public double X2 { get; set; }
     public double Y2 { get; set; }
     public double Orientation { get; set; }
-    public string Size { get; set; }
+    public string Label { get; set; }
     public double TagX { get; set; }
     public double TagY { get; set; }
     public double TagRotation { get; set; }
