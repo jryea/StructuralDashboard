@@ -1,0 +1,37 @@
+﻿@page "/plan"
+@rendermode InteractiveServer
+@inject IWebHostEnvironment Env
+
+<MudSelect  @bind-Value="_selectedLevel"
+            @bind-Value:after="OnLevelChanged"
+            Variant="Variant.Outlined">
+           
+    @foreach (var level in _levels)
+    {
+        <MudSelectItem Value="level">@level.Name </MudSelectItem>
+    }
+</MudSelect>
+<StructuralCanvas Model = "_selectedPlanView"/>
+
+    @code {
+    private Level _selectedLevel;
+    private PlanViewModel _selectedPlanView; 
+    private List<PlanViewModel> _planViewModels = new List<PlanViewModel>();
+    private List<Level> _levels = new List<Level>();
+    private StructuralModel _structuralModel;
+
+    protected override void OnInitialized()
+    {
+        var path = Path.Combine(Env.ContentRootPath, "Data", "SampleModels", "BeamsAndLevels.json");
+        _structuralModel = ModelLoaderService.LoadFromFile(path);
+        _levels = _structuralModel.ModelLayout.Levels;
+        _selectedLevel = _levels.First();
+        _planViewModels = _structuralModel.ConvertToPlanViewModels();
+        _selectedPlanView = _planViewModels.First();
+    }
+
+    private void OnLevelChanged()
+    {
+        _selectedPlanView = _planViewModels.FirstOrDefault(m => m.LevelId == _selectedLevel.Id); 
+    }
+}

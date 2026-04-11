@@ -1,5 +1,3 @@
-using StructuralDashboard.Web.Components;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,6 +8,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddMudServices();
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IRendererService, KonvaRenderer>();
 
 builder.Services.AddHttpClient("Api", client =>
 {

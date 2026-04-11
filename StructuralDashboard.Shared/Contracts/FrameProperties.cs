@@ -1,5 +1,4 @@
-﻿using StructuralDashboard.Shared.Contracts.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace StructuralDashboard.Shared.Contracts
 {

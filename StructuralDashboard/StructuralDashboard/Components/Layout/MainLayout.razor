@@ -1,15 +1,5 @@
 ﻿@inherits LayoutComponentBase
 
-@* Required *@
-<MudThemeProvider IsDarkMode="true"/>
-<MudPopoverProvider />
-
-@* Needed for dialogs *@
-<MudDialogProvider />
-
-@* Needed for snackbars *@
-<MudSnackbarProvider />
-
 <MudLayout>
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
