@@ -1,6 +1,6 @@
-﻿namespace StructuralDashboard.Web.Rendering;
+﻿namespace StructuralDashboard.Web.Services;
 
-public class KonvaRenderer : IStructuralRenderer
+public class KonvaRenderer : IRendererService
 {
     private readonly IJSRuntime _js;
     private IJSObjectReference? _module;

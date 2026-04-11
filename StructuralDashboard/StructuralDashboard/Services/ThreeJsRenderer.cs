@@ -1,6 +1,6 @@
-﻿namespace StructuralDashboard.Web.Rendering;
+﻿namespace StructuralDashboard.Web.Services;
 
-public class ThreeJsRenderer : IStructuralRenderer
+public class ThreeJsRenderer : IRendererService
 {
     private readonly IJSRuntime _js;
     private IJSObjectReference? _module;

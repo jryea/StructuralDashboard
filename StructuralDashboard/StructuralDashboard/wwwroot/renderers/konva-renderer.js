@@ -11,25 +11,35 @@ export function initialize(elementId, model) {
 
   // create a layer and add it
   layer = new Konva.Layer();
+  layer.clearBeforeDraw(true);
   stage.add(layer);
+
+  addZoom(stage);
 }
 
 export function render(model) {
-  const beams = model.members.filter((x) => x.type === 'beam');
+  layer.destroyChildren();
+
+  const beams = model.members.filter(
+    (x) => x.type === 'beam' || x.type === 'joist',
+  );
+  const columns = model.members.filter((x) => x.type === 'column');
+
   const beamLines = beams.map((b) => {
     return new Konva.Line({
       points: [b.x1, b.y1, b.x2, b.y2],
       stroke: 'white',
-      strokeWidth: 6,
+      strokeWidth: b.type == 'beam' ? 4 : 2,
       opacity: 0.7,
     });
   });
 
-  beamLines.map((b) => layer.add(b));
+  const beamTags = beams.map((b) => createBeamTag(b));
+
+  beamLines.forEach((b) => layer.add(b));
+  beamTags.forEach((b) => layer.add(b));
 
   fitToCanvas(model);
-
-  addZoom(stage);
 }
 
 export function destroy(elementId) {
@@ -82,4 +92,35 @@ function addZoom(stage) {
     stage.position(newPos);
     stage.batchDraw();
   });
+}
+
+function createBeamTag(beam) {
+  const tag = new Konva.Text({
+    x: beam.tagX,
+    y: beam.tagY,
+    text: beam.size,
+    rotation: beam.tagRotation,
+    fontSize: 14,
+    scaleX: -1,
+    fill: 'white',
+    opacity: 1,
+  });
+
+  tag.offsetX(tag.width() / 2);
+  return tag;
+}
+
+function createColumn(column) {
+  const rect = new Konva.Rect({
+    x: column.x1,
+    y: column.y1,
+    width: 8,
+    height: 8,
+    stroke: 'white',
+    strokeWidth: 2,
+    opacity: 0.7,
+    rotation: column.rotation,
+  });
+
+  return rect;
 }

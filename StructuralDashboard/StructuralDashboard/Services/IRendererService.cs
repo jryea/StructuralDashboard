@@ -1,8 +1,8 @@
 ﻿using StructuralDashboard.Web.Models;
 
-namespace StructuralDashboard.Web.Rendering;
+namespace StructuralDashboard.Web.Services;
 
-public interface IStructuralRenderer
+public interface IRendererService
 {
     Task InitializeAsync(string elementId, DotNetObjectReference<object> dotNetRef);
     Task RenderAsync(PlanViewModel model);

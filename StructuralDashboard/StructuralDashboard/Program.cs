@@ -8,7 +8,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddMudServices();
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddScoped<IStructuralRenderer, KonvaRenderer>();
+builder.Services.AddScoped<IRendererService, KonvaRenderer>();
 
 builder.Services.AddHttpClient("Api", client =>
 {
