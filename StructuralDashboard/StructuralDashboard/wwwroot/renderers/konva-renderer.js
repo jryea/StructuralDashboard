@@ -1,8 +1,9 @@
-﻿let stage, layer;
+﻿const stages = {};
+const layers = {};
 
-export function initialize(elementId, model) {
+export function initialize(elementId, dotnetRef) {
   // Create a stage (container for all layers)
-  stage = new Konva.Stage({
+  stages[elementId] = new Konva.Stage({
     container: elementId,
     width: 1600,
     height: 800,
@@ -10,14 +11,15 @@ export function initialize(elementId, model) {
   });
 
   // create a layer and add it
-  layer = new Konva.Layer();
-  layer.clearBeforeDraw(true);
-  stage.add(layer);
+  layers[elementId] = new Konva.Layer();
+  stages[elementId].add(layers[elementId]);
 
-  addZoom(stage);
+  addZoom(stages[elementId]);
 }
 
-export function render(model) {
+export function render(elementId, model) {
+  const layer = layers[elementId];
+  const stage = stages[elementId];
   layer.destroyChildren();
 
   const beams = model.members.filter(
@@ -36,14 +38,16 @@ export function render(model) {
   columnRects.forEach((c) => layer.add(c));
   gridLines.forEach((g) => layer.add(g));
 
-  fitToCanvas(model);
+  fitToCanvas(stage, layer, model);
 }
 
 export function destroy(elementId) {
-  console.log('renderer detroyed', elementId);
+  stages[elementId]?.destroy();
+  delete stages[elementId];
+  delete layers[elementId];
 }
 
-function fitToCanvas(model) {
+function fitToCanvas(stage, layer, model) {
   const stageWidth = stage.width();
   const stageHeight = stage.height();
 
