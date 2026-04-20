@@ -5,6 +5,6 @@ namespace StructuralDashboard.Web.Services;
 public interface IRendererService
 {
     Task InitializeAsync(string elementId, DotNetObjectReference<object> dotNetRef);
-    Task RenderAsync(PlanViewModel model);
+    Task RenderAsync(PlanViewCanvas model);
     Task DestroyAsync();
 }

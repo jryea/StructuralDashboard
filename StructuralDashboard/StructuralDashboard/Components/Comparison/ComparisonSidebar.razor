@@ -1,0 +1,18 @@
+﻿<MudPaper Class="pa-4" Style="height: 100%; width: 100%; box-sizing: border-box;" Elevation="1">
+    <MudTextField @bind-Value="Tolerance" Label="Tolerance" Variant="Variant.Outlined"></MudTextField>
+    <MudText>Revit</MudText>
+    <MudText>Horizontal</MudText>
+    <MudSelect T="Grid"
+        Value="RevitHorizontalGrid"
+        Variant="Variant.Outlined">
+    </MudSelect>
+    <MudText>Vertical</MudText>
+</MudPaper>
+
+@code {
+    public string Tolerance { get; set; }
+    public Grid RevitHorizontalGrid { get; set; }
+    public Grid RevitVerticalGrid { get; set; }
+    public Grid AnalysisHorizontalGrid { get; set; }
+    public Grid AnalysisVerticalGrid { get; set; }
+}

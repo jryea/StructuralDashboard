@@ -1,0 +1,98 @@
+﻿@page "/comparison"
+@rendermode InteractiveServer
+@inject IWebHostEnvironment Env
+
+<div style="display: grid;
+            grid-template-rows: auto 1fr;
+            grid-template-columns: 3fr 1fr;
+            gap: 8px;
+            padding: 8px;
+            height: 100%;
+            box-sizing: border-box;">
+
+    <div style="grid-column: 1 / -1;">
+        <BeamComparisonToolbar
+            @bind-RevitVisible="_isRevitVisible"
+            @bind-AnalysisVisible="_isAnalysisVisible"
+            RevitLevels="_revitLevels"
+            RevitLevel="_revitSelectedLevel"
+            RevitLevelChanged="OnRevitLevelChanged"
+            AnalysisLevels="_analysisLevels"
+            AnalysisLevel="_analysisSelectedLevel"
+            AnalysisLevelChanged="OnAnalysisLevelChanged" />
+    </div>
+
+    <div style="min-height: 0; min-width: 0; " >
+        @if (_isRevitVisible)
+        {
+            <StructuralCanvas Model="_canvasModel" />
+        }
+    </div>
+
+    <div style="min-height: 0; min-width: 0;">
+        <ComparisonSidebar />
+    </div>
+</div>
+
+@code {
+    private Level _revitSelectedLevel;
+    private Level _analysisSelectedLevel;
+
+    private PlanViewCanvas _canvasModel = new();
+
+    private List<PlanViewModel> _revitPlanViewModels = new();
+    private List<PlanViewModel> _analysisPlanViewModels = new();
+
+    private List<Level> _revitLevels = new();
+    private List<Level> _analysisLevels = new();
+
+    private StructuralModel _revitStructuralModel;
+    private StructuralModel _analysisStructuralModel;
+
+    private bool _isRevitVisible = true;
+    private bool _isAnalysisVisible = true;
+
+    protected override void OnInitialized()
+    {
+        var revitPath = Path.Combine(Env.ContentRootPath, "Data", "RevitModel.json");
+        var analysisPath = Path.Combine(Env.ContentRootPath, "Data", "AnalysisModel.json");
+
+        _revitStructuralModel = ModelLoaderService.LoadFromFile(revitPath);
+        _analysisStructuralModel = ModelLoaderService.LoadFromFile(analysisPath);
+
+        _revitLevels = _revitStructuralModel.ModelLayout.Levels;
+        _analysisLevels = _analysisStructuralModel.ModelLayout.Levels;
+
+        _revitSelectedLevel = _revitLevels.First();
+        _analysisSelectedLevel = _analysisLevels.First();
+
+        _revitPlanViewModels = _revitStructuralModel.ConvertToPlanViewModels();
+        _analysisPlanViewModels = _analysisStructuralModel.ConvertToPlanViewModels();
+
+        _canvasModel = new PlanViewCanvas
+        {
+            RevitModel = _revitPlanViewModels.FirstOrDefault(m => m.LevelId == _revitSelectedLevel.Id),
+            AnalysisModel = _analysisPlanViewModels.FirstOrDefault(m => m.LevelId == _analysisSelectedLevel.Id)
+        };
+    }
+
+    private void OnRevitLevelChanged(Level level)
+    {
+        _revitSelectedLevel = level;
+        _canvasModel = new PlanViewCanvas
+        {
+            RevitModel = _revitPlanViewModels.FirstOrDefault(m => m.LevelId == level.Id),
+            AnalysisModel = _canvasModel.AnalysisModel
+        };
+    }
+
+    private void OnAnalysisLevelChanged(Level level)
+    {
+        _analysisSelectedLevel = level;
+        _canvasModel = new PlanViewCanvas
+        {
+            RevitModel = _canvasModel.RevitModel,
+            AnalysisModel = _analysisPlanViewModels.FirstOrDefault(m => m.LevelId == level.Id)
+        };
+    }
+}

@@ -16,7 +16,7 @@ public class KonvaRenderer : IRendererService
         await _module.InvokeVoidAsync("initialize", elementId, dotNetRef);
     }
 
-    public async Task RenderAsync(PlanViewModel model)
+    public async Task RenderAsync(PlanViewCanvas model)
     {
         await _module!.InvokeVoidAsync("render", model);
     }

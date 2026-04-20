@@ -1,26 +1,29 @@
-﻿const stages = {};
-const layers = {};
+﻿let revitLayer, analysisLayer, stage;
 
 export function initialize(elementId, dotnetRef) {
-  // Create a stage (container for all layers)
-  stages[elementId] = new Konva.Stage({
+    // Create a stage (container for all layers)
+    const container = document.getElementById(elementId);
+  stage = new Konva.Stage({
     container: elementId,
-    width: 1600,
-    height: 800,
+      width: container.clientWidth,
+      height: container.clientHeight,
     draggable: true,
   });
 
-  // create a layer and add it
-  layers[elementId] = new Konva.Layer();
-  stages[elementId].add(layers[elementId]);
-
-  addZoom(stages[elementId]);
+  // Create Layers
+  revitLayer = new Konva.Layer();
+  analysisLayer = new Konva.Layer();
+  stage.add(revitLayer);
+  stage.add(analysisLayer);
+  addZoom(stage);
 }
 
-export function render(elementId, model) {
-  const layer = layers[elementId];
-  const stage = stages[elementId];
-  layer.destroyChildren();
+export function render(canvas) {
+  revitLayer.destroyChildren();
+    analysisLayer.destroyChildren();
+
+    const { revitModel, analysisModel } = canvas;
+    const model = revitModel;
 
   const beams = model.members.filter(
     (x) => x.type === 'beam' || x.type === 'joist',
@@ -33,18 +36,16 @@ export function render(elementId, model) {
   const beamTags = beams.map((b) => createBeamTag(b));
   const gridLines = grids.map((g) => createGrid(g));
 
-  beamLines.forEach((b) => layer.add(b));
-  beamTags.forEach((b) => layer.add(b));
-  columnRects.forEach((c) => layer.add(c));
-  gridLines.forEach((g) => layer.add(g));
+  beamLines.forEach((b) => revitLayer.add(b));
+  beamTags.forEach((b) => revitLayer.add(b));
+  columnRects.forEach((c) => revitLayer.add(c));
+  gridLines.forEach((g) => revitLayer.add(g));
 
-  fitToCanvas(stage, layer, model);
+  fitToCanvas(stage, revitLayer, model);
 }
 
 export function destroy(elementId) {
-  stages[elementId]?.destroy();
-  delete stages[elementId];
-  delete layers[elementId];
+  stage.destroy();
 }
 
 function fitToCanvas(stage, layer, model) {
