@@ -11,34 +11,42 @@
             box-sizing: border-box;">
 
     <div style="grid-column: 1 / -1;">
-        <BeamComparisonToolbar
-            @bind-RevitVisible="_isRevitVisible"
-            @bind-AnalysisVisible="_isAnalysisVisible"
-            RevitLevels="_revitLevels"
-            RevitLevel="_revitSelectedLevel"
-            RevitLevelChanged="OnRevitLevelChanged"
-            AnalysisLevels="_analysisLevels"
-            AnalysisLevel="_analysisSelectedLevel"
-            AnalysisLevelChanged="OnAnalysisLevelChanged" />
+        <BeamComparisonToolbar RevitVisible="_isRevitVisible"
+                               RevitVisibleChanged="OnRevitVisibleChanged"
+                               AnalysisVisible="_isAnalysisVisible"
+                               AnalysisVisibleChanged="OnAnalysisVisibleChanged"
+                               RevitLevels="_revitLevels"
+                               RevitLevel="_revitSelectedLevel"
+                               RevitLevelChanged="OnRevitLevelChanged"
+                               AnalysisLevels="_analysisLevels"
+                               AnalysisLevel="_analysisSelectedLevel"
+                               AnalysisLevelChanged="OnAnalysisLevelChanged" />
     </div>
 
     <div style="min-height: 0; min-width: 0; " >
-        @if (_isRevitVisible)
-        {
-            <StructuralCanvas Model="_canvasModel" />
-        }
+        <StructuralCanvas Model="_canvasModel" />
     </div>
 
     <div style="min-height: 0; min-width: 0;">
-        <ComparisonSidebar />
+        <ComparisonSidebar @bind-X="_x"
+                           @bind-Y="_y"
+                           @bind-Rotation="_rotation"
+                           Matches="_matches"
+                           OnCompareClicked="OnCompareClicked" />
     </div>
 </div>
 
 @code {
+    private double _x;
+    private double _y;
+    private double _rotation;
+    private List<BeamMatch> _matches = new();
+
     private Level _revitSelectedLevel;
     private Level _analysisSelectedLevel;
 
     private PlanViewCanvas _canvasModel = new();
+    private AlignmentTransform _analysisTransform = new();
 
     private List<PlanViewModel> _revitPlanViewModels = new();
     private List<PlanViewModel> _analysisPlanViewModels = new();
@@ -69,30 +77,88 @@
         _revitPlanViewModels = _revitStructuralModel.ConvertToPlanViewModels();
         _analysisPlanViewModels = _analysisStructuralModel.ConvertToPlanViewModels();
 
-        _canvasModel = new PlanViewCanvas
-        {
-            RevitModel = _revitPlanViewModels.FirstOrDefault(m => m.LevelId == _revitSelectedLevel.Id),
-            AnalysisModel = _analysisPlanViewModels.FirstOrDefault(m => m.LevelId == _analysisSelectedLevel.Id)
-        };
+        RebuildCanvas();
     }
 
     private void OnRevitLevelChanged(Level level)
     {
         _revitSelectedLevel = level;
-        _canvasModel = new PlanViewCanvas
-        {
-            RevitModel = _revitPlanViewModels.FirstOrDefault(m => m.LevelId == level.Id),
-            AnalysisModel = _canvasModel.AnalysisModel
-        };
+        RebuildCanvas();
     }
 
     private void OnAnalysisLevelChanged(Level level)
     {
         _analysisSelectedLevel = level;
+        RebuildCanvas();
+    }
+
+    private void OnRevitVisibleChanged(bool value)
+    {
+        _isRevitVisible = value;
+        RebuildCanvas();
+    }
+
+    private void OnAnalysisVisibleChanged(bool value)
+    {
+        _isAnalysisVisible = value;
+        RebuildCanvas();
+    }
+
+    private void RebuildCanvas()
+    {
         _canvasModel = new PlanViewCanvas
         {
-            RevitModel = _canvasModel.RevitModel,
-            AnalysisModel = _analysisPlanViewModels.FirstOrDefault(m => m.LevelId == level.Id)
+            RevitModel = _revitPlanViewModels.FirstOrDefault(m => m.LevelId == _revitSelectedLevel?.Id),
+            AnalysisModel = _analysisPlanViewModels.FirstOrDefault(m => m.LevelId == _analysisSelectedLevel?.Id),
+            RevitVisible = _isRevitVisible,
+            AnalysisVisible = _isAnalysisVisible,
+            AnalysisTransform = _analysisTransform
         };
+    }
+    private void OnCompareClicked()
+    {
+        _analysisTransform = new AlignmentTransform
+        {
+            X = _x,
+            Y = _y,
+            Rotation = _rotation
+        };
+        RebuildCanvas();
+        RunComparison();
+    }
+
+    private void RunComparison()
+    {
+        var revitBeams = _canvasModel.RevitModel?.Members
+            .Where(m => m.Type == "beam" || m.Type == "joist")
+            .ToList() ?? new();
+
+        var analysisBeams = _canvasModel.AnalysisModel?.Members
+            .Where(m => m.Type == "beam" || m.Type == "joist")
+            .ToList() ?? new();
+
+        _matches = new List<BeamMatch>();
+        int count = Math.Max(revitBeams.Count, analysisBeams.Count);
+
+        for (int i = 0; i < count; i++)
+        {
+            var r = i < revitBeams.Count ? revitBeams[i] : null;
+            var a = i < analysisBeams.Count ? analysisBeams[i] : null;
+
+            string status;
+            if (r is null) status = "A Only";
+            else if (a is null) status = "R Only";
+            else if (r.Label != a.Label) status = "Size";
+            else status = "Match";
+
+            _matches.Add(new BeamMatch
+            {
+                RevitId = r?.Id ?? "-",
+                RevitSize = r?.Label ?? "-",
+                AnalysisId = a?.Id ?? "-",
+                AnalysisSize = a?.Label ?? "-",
+                Status = status
+            });
+        }
     }
 }

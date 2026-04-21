@@ -1,12 +1,14 @@
 ﻿let revitLayer, analysisLayer, stage;
 
+const REVIT_COLOR = '#ef4444';
+const ANALYSIS_COLOR = '#22C55E';
+
 export function initialize(elementId, dotnetRef) {
-    // Create a stage (container for all layers)
-    const container = document.getElementById(elementId);
+  const container = document.getElementById(elementId);
   stage = new Konva.Stage({
     container: elementId,
-      width: container.clientWidth,
-      height: container.clientHeight,
+    width: container.clientWidth,
+    height: container.clientHeight,
     draggable: true,
   });
 
@@ -17,13 +19,55 @@ export function initialize(elementId, dotnetRef) {
   stage.add(analysisLayer);
   addZoom(stage);
 }
-
 export function render(canvas) {
-  revitLayer.destroyChildren();
+    revitLayer.destroyChildren();
     analysisLayer.destroyChildren();
 
-    const { revitModel, analysisModel } = canvas;
-    const model = revitModel;
+    const { revitModel, analysisModel, revitVisible, analysisVisible } = canvas;
+
+    renderModelToLayer(revitModel, revitLayer, REVIT_COLOR);
+    renderModelToLayer(analysisModel, analysisLayer, ANALYSIS_COLOR);
+
+    revitLayer.visible(revitVisible);
+    analysisLayer.visible(analysisVisible);
+
+    fitToCanvas(stage, [revitLayer, analysisLayer], [revitModel, analysisModel]);
+}
+
+export function destroy(elementId) {
+  stage.destroy();
+}
+
+function fitToCanvas(stage, layers, models) {
+    const present = models.filter(m => m);
+    if (present.length === 0) return;
+
+    const minX = Math.min(...present.map(m => m.minX));
+    const minY = Math.min(...present.map(m => m.minY));
+    const maxX = Math.max(...present.map(m => m.maxX));
+    const maxY = Math.max(...present.map(m => m.maxY));
+
+    const padding = 40;
+    const modelWidth = maxX - minX;
+    const modelHeight = maxY - minY;
+
+    const scaleX = (stage.width() - padding * 2) / modelWidth;
+    const scaleY = (stage.height() - padding * 2) / modelHeight;
+    const scale = Math.min(scaleX, scaleY);
+
+    const position = {
+        x: -minX * scale + padding,
+        y: maxY * scale + padding,
+    };
+
+    layers.forEach(layer => {
+        layer.scale({ x: scale, y: -scale });
+        layer.position(position);
+    });
+}
+
+function renderModelToLayer(model, layer, color) {
+  if (!model) return;
 
   const beams = model.members.filter(
     (x) => x.type === 'beam' || x.type === 'joist',
@@ -31,40 +75,10 @@ export function render(canvas) {
   const columns = model.members.filter((x) => x.type === 'column');
   const grids = model.members.filter((x) => x.type === 'grid');
 
-  const beamLines = beams.map((b) => createBeam(b));
-  const columnRects = columns.map((c) => createColumn(c));
-  const beamTags = beams.map((b) => createBeamTag(b));
-  const gridLines = grids.map((g) => createGrid(g));
-
-  beamLines.forEach((b) => revitLayer.add(b));
-  beamTags.forEach((b) => revitLayer.add(b));
-  columnRects.forEach((c) => revitLayer.add(c));
-  gridLines.forEach((g) => revitLayer.add(g));
-
-  fitToCanvas(stage, revitLayer, model);
-}
-
-export function destroy(elementId) {
-  stage.destroy();
-}
-
-function fitToCanvas(stage, layer, model) {
-  const stageWidth = stage.width();
-  const stageHeight = stage.height();
-
-  const padding = 40;
-  const modelWidth = model.maxX - model.minX;
-  const modelHeight = model.maxY - model.minY;
-
-  const scaleX = (stage.width() - padding * 2) / modelWidth;
-  const scaleY = (stage.height() - padding * 2) / modelHeight;
-  const scale = Math.min(scaleX, scaleY);
-
-  layer.scale({ x: scale, y: -scale });
-  layer.position({
-    x: -model.minX * scale + padding,
-    y: model.maxY * scale + padding,
-  });
+  beams.forEach((b) => layer.add(createBeam(b, color)));
+  beams.forEach((b) => layer.add(createBeamTag(b, color)));
+  columns.forEach((c) => layer.add(createColumn(c, color)));
+  grids.forEach((g) => layer.add(createGrid(g, color)));
 }
 
 function addZoom(stage) {
@@ -96,16 +110,16 @@ function addZoom(stage) {
   });
 }
 
-function createBeam(beam) {
+function createBeam(beam, color) {
   return new Konva.Line({
     points: [beam.x1, beam.y1, beam.x2, beam.y2],
-    stroke: 'white',
+    stroke: color,
     strokeWidth: beam.type == 'beam' ? 4 : 2,
     opacity: 0.7,
   });
 }
 
-function createBeamTag(beam) {
+function createBeamTag(beam, color) {
   const tag = new Konva.Text({
     x: beam.tagX,
     y: beam.tagY,
@@ -113,7 +127,7 @@ function createBeamTag(beam) {
     rotation: beam.tagRotation,
     fontSize: 14,
     scaleX: -1,
-    fill: 'white',
+    fill: color,
     opacity: 1,
   });
 
@@ -121,13 +135,13 @@ function createBeamTag(beam) {
   return tag;
 }
 
-function createColumn(column) {
+function createColumn(column, color) {
   const rect = new Konva.Rect({
     x: column.x1 - 4,
     y: column.y1 - 4,
     width: 8,
     height: 8,
-    stroke: 'white',
+    stroke: color,
     strokeWidth: 2,
     opacity: 0.7,
     rotation: column.rotation,
@@ -135,10 +149,10 @@ function createColumn(column) {
   return rect;
 }
 
-function createGrid(grid) {
+function createGrid(grid, color) {
   const line = new Konva.Line({
     points: [grid.x1, grid.y1, grid.x2, grid.y2],
-    stroke: 'white',
+    stroke: color,
     strokeWidth: 1,
     dash: [4, 4],
     opacity: 0.7,
@@ -148,7 +162,7 @@ function createGrid(grid) {
     x: grid.x1,
     y: grid.y1,
     radius: 24,
-    stroke: 'white',
+    stroke: color,
     strokeWidth: 1,
     opacity: 0.7,
   });
@@ -156,7 +170,7 @@ function createGrid(grid) {
     x: grid.x2,
     y: grid.y2,
     radius: 24,
-    stroke: 'white',
+    stroke: color,
     strokeWidth: 1,
     opacity: 0.7,
   });
@@ -165,7 +179,7 @@ function createGrid(grid) {
     y: grid.y1,
     text: grid.label,
     fontSize: 14,
-    fill: 'white',
+    fill: color,
     scaleY: -1,
   });
   const gridBubbleTextEnd = new Konva.Text({
@@ -173,7 +187,7 @@ function createGrid(grid) {
     y: grid.y2,
     text: grid.label,
     fontSize: 14,
-    fill: 'white',
+    fill: color,
     scaleY: -1,
   });
 

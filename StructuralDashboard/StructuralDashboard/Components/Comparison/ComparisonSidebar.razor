@@ -1,18 +1,56 @@
-﻿<MudPaper Class="pa-4" Style="height: 100%; width: 100%; box-sizing: border-box;" Elevation="1">
-    <MudTextField @bind-Value="Tolerance" Label="Tolerance" Variant="Variant.Outlined"></MudTextField>
-    <MudText>Revit</MudText>
-    <MudText>Horizontal</MudText>
-    <MudSelect T="Grid"
-        Value="RevitHorizontalGrid"
-        Variant="Variant.Outlined">
-    </MudSelect>
-    <MudText>Vertical</MudText>
+﻿<MudPaper Class="pa-4" Style="height: 100%; width: 100%; overflow-y: auto; box-sizing: border-box;" Elevation="1">
+    <MudStack Spacing="3">
+        <MudText Typo="Typo.h6">Align</MudText>
+
+        <MudNumericField @bind-Value="X" Label="X" Variant="Variant.Outlined" />
+        <MudNumericField @bind-Value="Y" Label="Y" Variant="Variant.Outlined" />
+        <MudNumericField @bind-Value="Rotation" Label="Rotation" Variant="Variant.Outlined" />
+
+        <MudButton Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   OnClick="OnCompareClickedInternal"
+                   FullWidth="true">
+            Compare Models
+        </MudButton>
+
+        @if (Matches is not null && Matches.Any())
+        {
+            <MudText Typo="Typo.subtitle2">Results (@Matches.Count)</MudText>
+            <MudTable Items="Matches" Dense="true" Hover="true" Bordered="false" Striped="true">
+                <HeaderContent>
+                    <MudTh>Revit</MudTh>
+                    <MudTh>Analysis</MudTh>
+                    <MudTh>Status</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>
+                        <div>@context.RevitId</div>
+                        <div style="opacity: 0.6; font-size: 0.8em;">@context.RevitSize</div>
+                    </MudTd>
+                    <MudTd>
+                        <div>@context.AnalysisId</div>
+                        <div style="opacity: 0.6; font-size: 0.8em;">@context.AnalysisSize</div>
+                    </MudTd>
+                    <MudTd>@context.Status</MudTd>
+                </RowTemplate>
+            </MudTable>
+        }
+    </MudStack>
 </MudPaper>
 
 @code {
-    public string Tolerance { get; set; }
-    public Grid RevitHorizontalGrid { get; set; }
-    public Grid RevitVerticalGrid { get; set; }
-    public Grid AnalysisHorizontalGrid { get; set; }
-    public Grid AnalysisVerticalGrid { get; set; }
+    [Parameter] public double X { get; set; }
+    [Parameter] public EventCallback<double> XChanged { get; set; }
+
+    [Parameter] public double Y { get; set; }
+    [Parameter] public EventCallback<double> YChanged { get; set; }
+
+    [Parameter] public double Rotation { get; set; }
+    [Parameter] public EventCallback<double> RotationChanged { get; set; }
+
+    [Parameter] public List<BeamMatch> Matches { get; set; }
+
+    [Parameter] public EventCallback OnCompareClicked { get; set; }
+
+    private Task OnCompareClickedInternal() => OnCompareClicked.InvokeAsync();
 }

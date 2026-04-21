@@ -2,7 +2,10 @@
 
 <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.FlexStart" mud-width-full>
 
-    <MudCheckBox @bind-Value="RevitVisible" T="bool" Dense="true"/>
+    <MudCheckBox Value="RevitVisible"
+                 ValueChanged="OnRevitVisibleChanged"
+                 T="bool"
+                 Dense="true" />
     <MudText Typo="Typo.caption">REVIT</MudText>
     <MudSelect T="Level"
                Value="RevitLevel"
@@ -15,7 +18,10 @@
         }
     </MudSelect>
 
-    <MudCheckBox @bind-Value="AnalysisVisible" T="bool" Dense="true" />
+    <MudCheckBox Value="AnalysisVisible"
+                 ValueChanged="OnAnalysisVisibleChanged"
+                 T="bool"
+                 Dense="true" />
     <MudText Typo="Typo.caption">ANALYSIS</MudText>
     <MudSelect T="Level"
                Value="AnalysisLevel"
@@ -47,4 +53,7 @@
 
     private Task OnRevitLevelChanged(Level level) => RevitLevelChanged.InvokeAsync(level);
     private Task OnAnalysisLevelChanged(Level level) => AnalysisLevelChanged.InvokeAsync(level);
+
+    private Task OnRevitVisibleChanged (bool value) => RevitVisibleChanged.InvokeAsync(value);
+    private Task OnAnalysisVisibleChanged(bool value) => AnalysisVisibleChanged.InvokeAsync(value);
 }
