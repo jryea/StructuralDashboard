@@ -1,0 +1,59 @@
+﻿@rendermode InteractiveServer
+
+<MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.FlexStart" mud-width-full>
+
+    <MudCheckBox Value="RevitVisible"
+                 ValueChanged="OnRevitVisibleChanged"
+                 T="bool"
+                 Dense="true" />
+    <MudText Typo="Typo.caption">REVIT</MudText>
+    <MudSelect T="Level"
+               Value="RevitLevel"
+               ValueChanged="OnRevitLevelChanged"
+               Variant="Variant.Outlined">
+           
+        @foreach (var level in RevitLevels)
+        {
+            <MudSelectItem Value="level">@level.Name </MudSelectItem>
+        }
+    </MudSelect>
+
+    <MudCheckBox Value="AnalysisVisible"
+                 ValueChanged="OnAnalysisVisibleChanged"
+                 T="bool"
+                 Dense="true" />
+    <MudText Typo="Typo.caption">ANALYSIS</MudText>
+    <MudSelect T="Level"
+               Value="AnalysisLevel"
+               ValueChanged="OnAnalysisLevelChanged"
+               Variant="Variant.Outlined">
+           
+        @foreach (var level in AnalysisLevels)
+        {
+            <MudSelectItem Value="level">@level.Name </MudSelectItem>
+        }
+    </MudSelect>
+
+</MudStack>
+
+@code {
+    [Parameter] public bool RevitVisible { get; set; } = true;
+    [Parameter] public EventCallback<bool> RevitVisibleChanged { get; set; }
+
+    [Parameter] public bool AnalysisVisible { get; set; } = true;
+    [Parameter] public EventCallback<bool> AnalysisVisibleChanged { get; set; }
+
+    [Parameter] public List<Level> RevitLevels { get; set; }
+    [Parameter] public Level RevitLevel { get; set; }
+    [Parameter] public EventCallback<Level> RevitLevelChanged { get; set; }
+
+    [Parameter] public List<Level> AnalysisLevels { get; set; }
+    [Parameter] public Level AnalysisLevel { get; set; }
+    [Parameter] public EventCallback<Level> AnalysisLevelChanged { get; set; }
+
+    private Task OnRevitLevelChanged(Level level) => RevitLevelChanged.InvokeAsync(level);
+    private Task OnAnalysisLevelChanged(Level level) => AnalysisLevelChanged.InvokeAsync(level);
+
+    private Task OnRevitVisibleChanged (bool value) => RevitVisibleChanged.InvokeAsync(value);
+    private Task OnAnalysisVisibleChanged(bool value) => AnalysisVisibleChanged.InvokeAsync(value);
+}
