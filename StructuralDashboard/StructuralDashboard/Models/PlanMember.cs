@@ -13,4 +13,5 @@ public class PlanMember
     public double TagX { get; set; }
     public double TagY { get; set; }
     public double TagRotation { get; set; }
+    public string? MatchStatus { get; set; }
 }

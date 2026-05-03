@@ -9,6 +9,8 @@ builder.Services.AddMudServices();
 
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IRendererService, KonvaRenderer>();
+builder.Services.AddScoped<IBeamMatchService, BeamMatchService>();
+builder.Services.AddScoped<IGridMatchService, GridMatchService>();
 
 builder.Services.AddHttpClient("Api", client =>
 {
