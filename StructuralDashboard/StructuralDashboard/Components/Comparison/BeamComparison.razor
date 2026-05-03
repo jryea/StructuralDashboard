@@ -1,6 +1,8 @@
 ﻿@page "/comparison"
 @rendermode InteractiveServer
 @inject IWebHostEnvironment Env
+@inject IBeamMatchService MatchService
+@inject IGridMatchService GridMatchService
 
 <div style="display: grid;
             grid-template-rows: auto 1fr;
@@ -28,18 +30,21 @@
     </div>
 
     <div style="min-height: 0; min-width: 0;">
-        <ComparisonSidebar @bind-X="_x"
-                           @bind-Y="_y"
-                           @bind-Rotation="_rotation"
+        <ComparisonSidebar X="_analysisTransform.X"
+                           XChanged="OnXChanged"
+                           Y="_analysisTransform.Y"
+                           YChanged="OnYChanged"
+                           Rotation="_analysisTransform.Rotation"
+                           RotationChanged="OnRotationChanged"
+                           Tolerance="_tolerance"
+                           ToleranceChanged="OnToleranceChanged"
                            Matches="_matches"
                            OnCompareClicked="OnCompareClicked" />
     </div>
 </div>
 
 @code {
-    private double _x;
-    private double _y;
-    private double _rotation;
+    private double _tolerance = 24.0;
     private List<BeamMatch> _matches = new();
 
     private Level _revitSelectedLevel;
@@ -83,13 +88,13 @@
     private void OnRevitLevelChanged(Level level)
     {
         _revitSelectedLevel = level;
-        RebuildCanvas();
+        ResetToAlignmentMode();
     }
 
     private void OnAnalysisLevelChanged(Level level)
     {
         _analysisSelectedLevel = level;
-        RebuildCanvas();
+        ResetToAlignmentMode();
     }
 
     private void OnRevitVisibleChanged(bool value)
@@ -104,6 +109,11 @@
         RebuildCanvas();
     }
 
+    private void OnXChanged(double x)          { _analysisTransform.X = x; ResetToAlignmentMode(); }
+    private void OnYChanged(double y)          { _analysisTransform.Y = y; ResetToAlignmentMode(); }
+    private void OnRotationChanged(double r)   { _analysisTransform.Rotation = r; ResetToAlignmentMode(); }
+    private void OnToleranceChanged(double t)  { _tolerance = t; ResetToAlignmentMode(); }
+
     private void RebuildCanvas()
     {
         _canvasModel = new PlanViewCanvas
@@ -117,48 +127,31 @@
     }
     private void OnCompareClicked()
     {
-        _analysisTransform = new AlignmentTransform
-        {
-            X = _x,
-            Y = _y,
-            Rotation = _rotation
-        };
         RebuildCanvas();
-        RunComparison();
+        if (_canvasModel.RevitModel is null || _canvasModel.AnalysisModel is null) return;
+
+        _matches = MatchService.Match(
+            _canvasModel.RevitModel,
+            _canvasModel.AnalysisModel,
+            _canvasModel.AnalysisTransform,
+            _tolerance);
+
+        GridMatchService.Match(
+            _canvasModel.RevitModel,
+            _canvasModel.AnalysisModel,
+            _canvasModel.AnalysisTransform,
+            _tolerance);
+
+        RebuildCanvas();
     }
 
-    private void RunComparison()
+    private void ResetToAlignmentMode()
     {
-        var revitBeams = _canvasModel.RevitModel?.Members
-            .Where(m => m.Type == "beam" || m.Type == "joist")
-            .ToList() ?? new();
-
-        var analysisBeams = _canvasModel.AnalysisModel?.Members
-            .Where(m => m.Type == "beam" || m.Type == "joist")
-            .ToList() ?? new();
-
-        _matches = new List<BeamMatch>();
-        int count = Math.Max(revitBeams.Count, analysisBeams.Count);
-
-        for (int i = 0; i < count; i++)
-        {
-            var r = i < revitBeams.Count ? revitBeams[i] : null;
-            var a = i < analysisBeams.Count ? analysisBeams[i] : null;
-
-            string status;
-            if (r is null) status = "A Only";
-            else if (a is null) status = "R Only";
-            else if (r.Label != a.Label) status = "Size";
-            else status = "Match";
-
-            _matches.Add(new BeamMatch
-            {
-                RevitId = r?.Id ?? "-",
-                RevitSize = r?.Label ?? "-",
-                AnalysisId = a?.Id ?? "-",
-                AnalysisSize = a?.Label ?? "-",
-                Status = status
-            });
-        }
+        _matches = new();
+        foreach (var pvm in _revitPlanViewModels)
+            foreach (var m in pvm.Members) m.MatchStatus = null;
+        foreach (var pvm in _analysisPlanViewModels)
+            foreach (var m in pvm.Members) m.MatchStatus = null;
+        RebuildCanvas();
     }
 }
