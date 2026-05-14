@@ -15,7 +15,7 @@ public class WallEntity
     public LevelEntity BaseLevel { get; set; } = null!;
     public string TopLevelId { get; set; } = null!;
     public LevelEntity TopLevel { get; set; } = null!;
-    public string PropertiesId { get; set; } = null!;
-    public WallPropertiesEntity Properties { get; set; } = null!;
+    public string? PropertiesId { get; set; } = null!;
+    public WallPropertiesEntity? Properties { get; set; } = null!;
     public bool IsLateral { get; set; } 
 }

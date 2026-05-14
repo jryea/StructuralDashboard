@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StructuralDashboard.Api.Data;
 
@@ -11,9 +12,11 @@ using StructuralDashboard.Api.Data;
 namespace StructuralDashboard.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260514161608_PendingChanges")]
+    partial class PendingChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +31,7 @@ namespace StructuralDashboard.Api.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FramePropertiesId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsJoist")
@@ -65,6 +69,7 @@ namespace StructuralDashboard.Api.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FramePropertiesId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ModelId")
@@ -98,6 +103,7 @@ namespace StructuralDashboard.Api.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FramePropertiesId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsLateral")
@@ -127,6 +133,44 @@ namespace StructuralDashboard.Api.Migrations
                     b.ToTable("Columns");
                 });
 
+            modelBuilder.Entity("StructuralDashboard.Shared.Entities.DeckPropertiesEntity", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("DeckShearThickness")
+                        .HasColumnType("float");
+
+                    b.Property<string>("DeckType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("DeckUnitWeight")
+                        .HasColumnType("float");
+
+                    b.Property<string>("MaterialId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<double>("RibDepth")
+                        .HasColumnType("float");
+
+                    b.Property<double>("RibSpacing")
+                        .HasColumnType("float");
+
+                    b.Property<double>("RibWidthBottom")
+                        .HasColumnType("float");
+
+                    b.Property<double>("RibWidthTop")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MaterialId");
+
+                    b.ToTable("DeckPropertiesEntity");
+                });
+
             modelBuilder.Entity("StructuralDashboard.Shared.Entities.DiaphragmEntity", b =>
                 {
                     b.Property<string>("Id")
@@ -153,6 +197,7 @@ namespace StructuralDashboard.Api.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FloorPropertiesId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LevelId")
@@ -189,6 +234,10 @@ namespace StructuralDashboard.Api.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("DeckPropertiesId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("MaterialId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -215,6 +264,8 @@ namespace StructuralDashboard.Api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DeckPropertiesId");
+
                     b.HasIndex("MaterialId");
 
                     b.HasIndex("ModelId");
@@ -230,9 +281,6 @@ namespace StructuralDashboard.Api.Migrations
                     b.Property<string>("MaterialId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("MaterialType")
-                        .HasColumnType("int");
 
                     b.Property<string>("ModelId")
                         .IsRequired()
@@ -467,6 +515,7 @@ namespace StructuralDashboard.Api.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PropertiesId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("TopLevelId")
@@ -495,9 +544,6 @@ namespace StructuralDashboard.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("MaterialType")
-                        .HasColumnType("int");
-
                     b.Property<string>("ModelId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -506,10 +552,7 @@ namespace StructuralDashboard.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("Thickness")
-                        .HasColumnType("float");
-
-                    b.Property<double?>("UnitWeightForSelfWeight")
+                    b.Property<double>("Thickness")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
@@ -526,7 +569,8 @@ namespace StructuralDashboard.Api.Migrations
                     b.HasOne("StructuralDashboard.Shared.Entities.FramePropertiesEntity", "FrameProperties")
                         .WithMany()
                         .HasForeignKey("FramePropertiesId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("StructuralDashboard.Shared.Entities.LevelEntity", "Level")
                         .WithMany()
@@ -647,7 +691,8 @@ namespace StructuralDashboard.Api.Migrations
                     b.HasOne("StructuralDashboard.Shared.Entities.FramePropertiesEntity", "FrameProperties")
                         .WithMany()
                         .HasForeignKey("FramePropertiesId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("StructuralDashboard.Shared.Entities.StructuralModelEntity", "Model")
                         .WithMany()
@@ -770,7 +815,8 @@ namespace StructuralDashboard.Api.Migrations
                     b.HasOne("StructuralDashboard.Shared.Entities.FramePropertiesEntity", "FrameProperties")
                         .WithMany()
                         .HasForeignKey("FramePropertiesId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("StructuralDashboard.Shared.Entities.StructuralModelEntity", "Model")
                         .WithMany()
@@ -882,6 +928,17 @@ namespace StructuralDashboard.Api.Migrations
                     b.Navigation("TopLevel");
                 });
 
+            modelBuilder.Entity("StructuralDashboard.Shared.Entities.DeckPropertiesEntity", b =>
+                {
+                    b.HasOne("StructuralDashboard.Shared.Entities.MaterialEntity", "Material")
+                        .WithMany()
+                        .HasForeignKey("MaterialId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Material");
+                });
+
             modelBuilder.Entity("StructuralDashboard.Shared.Entities.FloorEntity", b =>
                 {
                     b.HasOne("StructuralDashboard.Shared.Entities.DiaphragmEntity", "Diaphragm")
@@ -892,7 +949,8 @@ namespace StructuralDashboard.Api.Migrations
                     b.HasOne("StructuralDashboard.Shared.Entities.FloorPropertiesEntity", "FloorProperties")
                         .WithMany()
                         .HasForeignKey("FloorPropertiesId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("StructuralDashboard.Shared.Entities.LevelEntity", "Level")
                         .WithMany()
@@ -996,6 +1054,12 @@ namespace StructuralDashboard.Api.Migrations
 
             modelBuilder.Entity("StructuralDashboard.Shared.Entities.FloorPropertiesEntity", b =>
                 {
+                    b.HasOne("StructuralDashboard.Shared.Entities.DeckPropertiesEntity", "DeckProperties")
+                        .WithMany()
+                        .HasForeignKey("DeckPropertiesId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("StructuralDashboard.Shared.Entities.MaterialEntity", "Material")
                         .WithMany()
                         .HasForeignKey("MaterialId")
@@ -1007,44 +1071,6 @@ namespace StructuralDashboard.Api.Migrations
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.OwnsOne("StructuralDashboard.Shared.Entities.DeckPropertiesEntity", "DeckProperties", b1 =>
-                        {
-                            b1.Property<string>("FloorPropertiesEntityId")
-                                .HasColumnType("nvarchar(450)");
-
-                            b1.Property<double>("DeckShearThickness")
-                                .HasColumnType("float");
-
-                            b1.Property<string>("DeckType")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<double>("DeckUnitWeight")
-                                .HasColumnType("float");
-
-                            b1.Property<string>("MaterialId")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<double>("RibDepth")
-                                .HasColumnType("float");
-
-                            b1.Property<double>("RibSpacing")
-                                .HasColumnType("float");
-
-                            b1.Property<double>("RibWidthBottom")
-                                .HasColumnType("float");
-
-                            b1.Property<double>("RibWidthTop")
-                                .HasColumnType("float");
-
-                            b1.HasKey("FloorPropertiesEntityId");
-
-                            b1.ToTable("FloorProperties");
-
-                            b1.WithOwner()
-                                .HasForeignKey("FloorPropertiesEntityId");
-                        });
 
                     b.OwnsOne("StructuralDashboard.Shared.Entities.ShellModifiersEntity", "ShellModifiers", b1 =>
                         {
@@ -1374,58 +1400,7 @@ namespace StructuralDashboard.Api.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.OwnsOne("StructuralDashboard.Shared.Entities.ConcreteMaterialPropertiesEntity", "ConcreteProps", b1 =>
-                        {
-                            b1.Property<string>("MaterialEntityId")
-                                .HasColumnType("nvarchar(450)");
-
-                            b1.Property<double?>("Fc")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("ShearStrengthReductionFactor")
-                                .HasColumnType("float");
-
-                            b1.Property<int?>("WeightClass")
-                                .HasColumnType("int");
-
-                            b1.HasKey("MaterialEntityId");
-
-                            b1.ToTable("Materials");
-
-                            b1.WithOwner()
-                                .HasForeignKey("MaterialEntityId");
-                        });
-
-                    b.OwnsOne("StructuralDashboard.Shared.Entities.SteelMaterialPropertiesEntity", "SteelProps", b1 =>
-                        {
-                            b1.Property<string>("MaterialEntityId")
-                                .HasColumnType("nvarchar(450)");
-
-                            b1.Property<double?>("Fu")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("Fue")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("Fy")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("Fye")
-                                .HasColumnType("float");
-
-                            b1.HasKey("MaterialEntityId");
-
-                            b1.ToTable("Materials");
-
-                            b1.WithOwner()
-                                .HasForeignKey("MaterialEntityId");
-                        });
-
-                    b.Navigation("ConcreteProps");
-
                     b.Navigation("Model");
-
-                    b.Navigation("SteelProps");
                 });
 
             modelBuilder.Entity("StructuralDashboard.Shared.Entities.OpeningEntity", b =>
@@ -1502,7 +1477,8 @@ namespace StructuralDashboard.Api.Migrations
                     b.HasOne("StructuralDashboard.Shared.Entities.WallPropertiesEntity", "Properties")
                         .WithMany()
                         .HasForeignKey("PropertiesId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("StructuralDashboard.Shared.Entities.LevelEntity", "TopLevel")
                         .WithMany()
@@ -1582,51 +1558,6 @@ namespace StructuralDashboard.Api.Migrations
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.OwnsOne("StructuralDashboard.Shared.Entities.ShellModifiersEntity", "ETABSModifiers", b1 =>
-                        {
-                            b1.Property<string>("WallPropertiesEntityId")
-                                .HasColumnType("nvarchar(450)");
-
-                            b1.Property<double?>("F11")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("F12")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("F22")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("M11")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("M12")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("M22")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("Mass")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("V13")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("V23")
-                                .HasColumnType("float");
-
-                            b1.Property<double?>("Weight")
-                                .HasColumnType("float");
-
-                            b1.HasKey("WallPropertiesEntityId");
-
-                            b1.ToTable("WallProperties");
-
-                            b1.WithOwner()
-                                .HasForeignKey("WallPropertiesEntityId");
-                        });
-
-                    b.Navigation("ETABSModifiers");
 
                     b.Navigation("Material");
 

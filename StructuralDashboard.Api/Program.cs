@@ -4,6 +4,16 @@ using StructuralDashboard.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactDev", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -15,14 +25,18 @@ builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IStructuralModelRepository, StructuralModelRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IStructuralModelService, StructuralModelService>();
+builder.Services.AddScoped<IStructuralGraphService, StructuralGraphService>();
 
 var app = builder.Build();
+
+app.UseCors("AllowReactDev");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+        c.EnableTryItOutByDefault());
 }
 
 // Add exception handler middleware
@@ -49,5 +63,6 @@ app.Use(async (context, next) =>
 
 app.MapProjectEndpoints();
 app.MapStructuralModelEndpoints();
+app.MapGraphEndpoints();
 
 app.Run();

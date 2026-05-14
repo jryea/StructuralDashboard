@@ -14,4 +14,6 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Migrations;
 global using StructuralDashboard.Shared.Entities;
 global using StructuralDashboard.Shared.Contracts;
+global using StructuralDashboard.Shared.Shared;
+global using StructuralDashboard.Api.Domain;
 global using StructuralDashboard.Shared.Enums;

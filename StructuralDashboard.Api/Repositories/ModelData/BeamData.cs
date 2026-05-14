@@ -28,7 +28,7 @@ public class BeamData
         return beams;
     }
 
-    public void SaveBeams(string modelId, List<Beam> beams)
+    public void SaveBeams(string modelId, List<Beam> beams, HashSet<string> validFramePropertyIds)
     {
         var entities = beams.Select(b => new BeamEntity
         {
@@ -39,7 +39,7 @@ public class BeamData
             EndPoint = b.EndPoint,
             IsJoist = b.IsJoist,
             IsLateral = b.IsLateral,
-            FramePropertiesId = b.FramePropertiesId
+            FramePropertiesId = validFramePropertyIds.Contains(b.FramePropertiesId ?? "") ? b.FramePropertiesId : null
         });
 
         _context.Beams.AddRange(entities);

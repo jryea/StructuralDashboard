@@ -13,7 +13,7 @@ public class ColumnEntity
     public LevelEntity TopLevel { get; set; } = null!;
     public double Orientation { get; set; }
     public bool IsLateral { get; set; }   
-    public string FramePropertiesId { get; set; } = null!;
-    public FramePropertiesEntity FrameProperties { get; set; } = null!;
+    public string? FramePropertiesId { get; set; } = null!;
+    public FramePropertiesEntity? FrameProperties { get; set; } = null!;
     public FrameModifiersEntity? FrameModifiers { get; set; }
 }

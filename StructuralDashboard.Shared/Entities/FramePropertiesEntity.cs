@@ -1,5 +1,4 @@
-﻿
-namespace StructuralDashboard.Shared.Entities;
+﻿namespace StructuralDashboard.Shared.Entities;
 
 public class FramePropertiesEntity
 {
@@ -9,6 +8,7 @@ public class FramePropertiesEntity
     public string Name { get; set; } = null!;
     public string MaterialId { get; set; } = null!;
     public MaterialEntity Material { get; set; } = null!;
+    public MaterialType MaterialType { get; set; }
 
     public ConcreteFramePropertiesEntity? ConcreteProps { get; set; }
     public SteelFramePropertiesEntity? SteelProps { get; set; }
