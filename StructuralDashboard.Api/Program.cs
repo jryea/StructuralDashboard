@@ -75,3 +75,5 @@ app.MapGraphEndpoints();
 app.MapLoadingEndpoints();
 
 app.Run();
+
+public partial class Program { }
