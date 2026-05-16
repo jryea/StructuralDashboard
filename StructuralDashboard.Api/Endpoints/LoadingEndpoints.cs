@@ -1,4 +1,5 @@
-﻿using StructuralDashboard.Api.Services.Loading;
+﻿using Microsoft.AspNetCore.Mvc;
+using StructuralDashboard.Api.Services.Loading;
 using System.Threading;
 
 public static class LoadingEndpoints
@@ -10,7 +11,7 @@ public static class LoadingEndpoints
         group.MapGet("/{modelId}/members/{memberId}", async (
             string modelId,
             string memberId,
-            IMemberLoadingService service,
+            [FromServices] IMemberLoadingService service,
             CancellationToken ct) =>
         {
             var result = await service.GetForMemberAsync(modelId, memberId, ct);
@@ -19,11 +20,18 @@ public static class LoadingEndpoints
 
         group.MapGet("/{modelId}", async (
             string modelId,
-            IMemberLoadingService service,
+            [FromServices] IMemberLoadingService service,
             CancellationToken ct) =>
         {
-            var result = await service.GetOrComputeAsync(modelId, ct);
-            return Results.Ok(result);
+            try
+            {
+                var result = await service.GetOrComputeAsync(modelId, ct);
+                return Results.Ok(result);
+            }
+            catch (KeyNotFoundException)
+            {
+                return Results.NotFound();
+            }
         });
     }
 }

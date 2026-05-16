@@ -1,4 +1,6 @@
-﻿using StructuralDashboard.Api.Domain.Graph;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using StructuralDashboard.Api.Domain.Graph;
 using StructuralDashboard.Api.Domain.Loading;
 using StructuralDashboard.Shared.Contracts;
 
@@ -6,21 +8,84 @@ namespace StructuralDashboard.Api.Services.Loading;
 
 public sealed class LoadingBuilder : ILoadingBuilder
 {
+    private const double InchesPerFoot = 12.0;
+    private const double NodeMatchToleranceInches = 0.1;
+
+    private readonly ILogger<LoadingBuilder> _log;
+    public LoadingBuilder(ILogger<LoadingBuilder>? logger = null) =>
+        _log = logger ?? NullLogger<LoadingBuilder>.Instance;
+
     public IReadOnlyList<LoadableBeam> Build(StructuralModel model, StructuralGraph graph)
     {
-        // TODO (agent):
-        //   For each beam in model.elements.beams:
-        //     1. Find its two end nodes in the graph (by matching start/end coordinates).
-        //     2. Calculate span from start/end points.
-        //     3. Construct a LoadableBeam with:
-        //          - MemberId from the beam's id
-        //          - StartNodeId, EndNodeId from the matched graph nodes
-        //          - SpanFt from the geometric distance
-        //          - empty TributaryRegions, IncomingReactions, OutgoingReactions
-        //   Return the list.
-        //
-        // NOTE: walls and columns are NOT built into LoadableBeam — walls are
-        // input-only geometry for v1, columns are out of scope until LoadableColumn lands.
-        throw new NotImplementedException();
+        var loadables = new List<LoadableBeam>();
+        if (model?.Elements?.Beams is null) return loadables;
+
+        foreach (var beam in model.Elements.Beams)
+        {
+            if (beam is null || string.IsNullOrEmpty(beam.Id)) continue;
+            if (beam.StartPoint is null || beam.EndPoint is null) continue;
+
+            var endpoints = ResolveEndpoints(beam, graph);
+            if (endpoints is null) continue;
+
+            double spanFeet = Distance(beam.StartPoint, beam.EndPoint) / InchesPerFoot;
+            if (spanFeet <= 0) continue;
+
+            loadables.Add(new LoadableBeam
+            {
+                MemberId = beam.Id,
+                StartNodeId = endpoints.Value.start,
+                EndNodeId = endpoints.Value.end,
+                Span = spanFeet
+            });
+        }
+
+        _log.LogDebug("LoadingBuilder built {Count} LoadableBeams from model {ModelId}",
+            loadables.Count, model.Id);
+        return loadables;
+    }
+
+    private static (string start, string end)? ResolveEndpoints(Beam beam, StructuralGraph graph)
+    {
+        if (graph?.Members is not null &&
+            graph.Members.TryGetValue(beam.Id, out var graphMember) &&
+            graphMember.NodeIds.Count >= 2)
+        {
+            return (graphMember.NodeIds[0], graphMember.NodeIds[^1]);
+        }
+
+        if (graph?.Nodes is null) return null;
+
+        var startId = FindNodeByCoordinate(graph, beam.StartPoint);
+        var endId = FindNodeByCoordinate(graph, beam.EndPoint);
+        if (startId is null || endId is null) return null;
+        return (startId, endId);
+    }
+
+    private static string? FindNodeByCoordinate(StructuralGraph graph, Point p)
+    {
+        string? bestId = null;
+        double bestDistSq = NodeMatchToleranceInches * NodeMatchToleranceInches;
+        foreach (var node in graph.Nodes.Values)
+        {
+            double dx = node.X - p.X;
+            double dy = node.Y - p.Y;
+            double dz = node.Z - p.Z;
+            double d2 = dx * dx + dy * dy + dz * dz;
+            if (d2 <= bestDistSq)
+            {
+                bestDistSq = d2;
+                bestId = node.Id;
+            }
+        }
+        return bestId;
+    }
+
+    private static double Distance(Point a, Point b)
+    {
+        double dx = a.X - b.X;
+        double dy = a.Y - b.Y;
+        double dz = a.Z - b.Z;
+        return Math.Sqrt(dx * dx + dy * dy + dz * dz);
     }
 }

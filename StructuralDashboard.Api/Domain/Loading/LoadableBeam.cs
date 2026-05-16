@@ -28,7 +28,7 @@ public sealed class LoadableBeam
         new()
         {
             MemberId = MemberId,
-            SpanFt = SpanFt,
+            SpanFt = Span,
             DistributedLoad = DistributedLoad,
             ContributingTributaries = Tributaries.AsReadOnly(),
             IncomingPointLoads = IncomingReactions.AsReadOnly(),
