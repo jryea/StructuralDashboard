@@ -27,10 +27,13 @@ builder.Services.AddScoped<IStructuralModelRepository, StructuralModelRepository
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IStructuralModelService, StructuralModelService>();
 builder.Services.AddScoped<IStructuralGraphService, StructuralGraphService>();
+builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<ILoadingBuilder, LoadingBuilder>();
 builder.Services.AddSingleton<ITributaryCalculator, TributaryCalculator>();
 builder.Services.AddSingleton<ILoadAccumulator, LoadAccumulator>();
-builder.Services.AddSingleton<IMemberLoadingService, MemberLoadingService>();
+// Scoped because it depends on scoped IStructuralModelService / IStructuralGraphService.
+// IMemoryCache (singleton) carries the actual cached results across scopes.
+builder.Services.AddScoped<IMemberLoadingService, MemberLoadingService>();
 
 var app = builder.Build();
 
