@@ -29,7 +29,7 @@ public class ColumnData
         return columns;
     }
 
-    public void SaveColumns(string modelId, List<Column> columns)
+    public void SaveColumns(string modelId, List<Column> columns, HashSet<string> validFramePropertyIds)
     {
         var entities = columns.Select(c => new ColumnEntity
         {
@@ -40,7 +40,7 @@ public class ColumnData
             BaseLevelId = c.BaseLevelId,
             TopLevelId = c.TopLevelId,
             Orientation = c.Orientation,
-            FramePropertiesId = c.FramePropertiesId,
+            FramePropertiesId = validFramePropertyIds.Contains(c.FramePropertiesId ?? "") ? c.FramePropertiesId : null,
             IsLateral = c.IsLateral,
         }).ToList();
 

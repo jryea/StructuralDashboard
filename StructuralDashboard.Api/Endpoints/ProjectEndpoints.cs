@@ -4,7 +4,8 @@ public static class ProjectEndpoints
 {
     public static void MapProjectEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("/api/projects");
+        var group = app.MapGroup("/api/projects")
+            .WithTags("Projects");
 
         group.MapGet("/", GetAllProjects);
         group.MapGet("/{projectNumber}", GetProject);

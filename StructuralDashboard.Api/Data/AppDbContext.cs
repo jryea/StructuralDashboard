@@ -23,6 +23,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<IsolatedFootingEntity>().OwnsOne(f => f.Point);
 
         modelBuilder.Entity<FloorEntity>().OwnsOne(f => f.ShellModifiers);
+        modelBuilder.Entity<FloorPropertiesEntity>().OwnsOne(fp => fp.DeckProperties);
         modelBuilder.Entity<FloorPropertiesEntity>().OwnsOne(fp => fp.ShearStudProperties);
         modelBuilder.Entity<FloorPropertiesEntity>().OwnsOne(fp => fp.ShellModifiers);
 
@@ -30,6 +31,10 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<FramePropertiesEntity>().OwnsOne(fp => fp.SteelProps);
         modelBuilder.Entity<FramePropertiesEntity>().OwnsOne(fp => fp.WoodProps);
         modelBuilder.Entity<FramePropertiesEntity>().OwnsOne(fp => fp.FrameModifiers);
+
+        modelBuilder.Entity<MaterialEntity>().OwnsOne(m => m.ConcreteProps);
+        modelBuilder.Entity<MaterialEntity>().OwnsOne(m => m.SteelProps);
+        modelBuilder.Entity<WallPropertiesEntity>().OwnsOne(wp => wp.ETABSModifiers);
 
         modelBuilder.Entity<StructuralModelEntity>()
             .HasOne(m => m.Project)

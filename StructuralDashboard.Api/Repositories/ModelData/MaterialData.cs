@@ -3,7 +3,7 @@
 public class MaterialData
 {
     private readonly AppDbContext _context;
-    
+
     public MaterialData(AppDbContext context)
     {
         _context = context;
@@ -18,7 +18,27 @@ public class MaterialData
         {
             Id = m.Id,
             Name = m.Name,
-            MaterialType = m.MaterialType
+            DirectionalSymmetryType = m.DirectionalSymmetryType,
+            MaterialType = m.MaterialType,
+            WeightPerUnitVolume = m.WeightPerUnitVolume,
+            MassPerUnitVolume = m.MassPerUnitVolume,
+            ElasticModulus = m.ElasticModulus,
+            PoissonsRatio = m.PoissonsRatio,
+            CoefficientOfThermalExpansion = m.CoefficientOfThermalExpansion,
+            ShearModulus = m.ShearModulus,
+            ConcreteProps = m.ConcreteProps is null ? null : new ConcreteProperties
+            {
+                Fc = m.ConcreteProps.Fc,
+                WeightClass = m.ConcreteProps.WeightClass,
+                ShearStrengthReductionFactor = m.ConcreteProps.ShearStrengthReductionFactor
+            },
+            SteelProps = m.SteelProps is null ? null : new SteelProperties
+            {
+                Fy = m.SteelProps.Fy,
+                Fu = m.SteelProps.Fu,
+                Fye = m.SteelProps.Fye,
+                Fue = m.SteelProps.Fue
+            }
         }).ToList();
 
         return materials;
@@ -26,13 +46,32 @@ public class MaterialData
 
     public void SaveMaterials(string modelId, List<Material> materials)
     {
-        // Convert materials to entities
         var entities = materials.Select(m => new MaterialEntity
         {
             Id = m.Id,
             ModelId = modelId,
             Name = m.Name,
-            MaterialType = m.MaterialType
+            DirectionalSymmetryType = m.DirectionalSymmetryType,
+            MaterialType = m.MaterialType,
+            WeightPerUnitVolume = m.WeightPerUnitVolume,
+            MassPerUnitVolume = m.MassPerUnitVolume,
+            ElasticModulus = m.ElasticModulus,
+            PoissonsRatio = m.PoissonsRatio,
+            CoefficientOfThermalExpansion = m.CoefficientOfThermalExpansion,
+            ShearModulus = m.ShearModulus,
+            ConcreteProps = m.ConcreteProps is null ? null : new ConcreteMaterialPropertiesEntity
+            {
+                Fc = m.ConcreteProps.Fc,
+                WeightClass = m.ConcreteProps.WeightClass,
+                ShearStrengthReductionFactor = m.ConcreteProps.ShearStrengthReductionFactor
+            },
+            SteelProps = m.SteelProps is null ? null : new SteelMaterialPropertiesEntity
+            {
+                Fy = m.SteelProps.Fy,
+                Fu = m.SteelProps.Fu,
+                Fye = m.SteelProps.Fye,
+                Fue = m.SteelProps.Fue
+            }
         }).ToList();
 
         _context.Materials.AddRange(entities);

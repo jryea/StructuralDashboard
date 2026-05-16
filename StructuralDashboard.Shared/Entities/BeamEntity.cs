@@ -16,7 +16,7 @@ public class BeamEntity
     public Point EndPoint { get; set; } = null!;
     public bool IsJoist { get; set; }
     public bool IsLateral { get; set; } 
-    public string FramePropertiesId { get; set; } = null!;
-    public FramePropertiesEntity FrameProperties { get; set; } = null!;
+    public string? FramePropertiesId { get; set; } = null!;
+    public FramePropertiesEntity? FrameProperties { get; set; } = null!;
     public FrameModifiersEntity? FrameModifiers { get; set; }
 }

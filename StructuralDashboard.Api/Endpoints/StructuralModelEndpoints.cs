@@ -4,7 +4,8 @@ public static class StructuralModelEndpoints
 {
     public static void MapStructuralModelEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("/api/structuralModels");
+        var group = app.MapGroup("/api/structuralModels")
+            .WithTags("Structural Models");
 
         group.MapGet("/project/{projectNumber}", GetAllStructuralModels);
         group.MapGet("/{modelId}", GetStructuralModel);

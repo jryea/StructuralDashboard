@@ -11,7 +11,7 @@ public class BraceEntity
     public LevelEntity TopLevel { get; set; } = null!;
     public Point StartPoint { get; set; } = null!;
     public Point EndPoint { get; set; } = null!;
-    public string FramePropertiesId { get; set; } = null!;   
-    public FramePropertiesEntity FrameProperties { get; set; } = null!;
+    public string? FramePropertiesId { get; set; } = null!;   
+    public FramePropertiesEntity? FrameProperties { get; set; } = null!;
     public FrameModifiersEntity? FrameModifiers { get; set; } = null;
 }

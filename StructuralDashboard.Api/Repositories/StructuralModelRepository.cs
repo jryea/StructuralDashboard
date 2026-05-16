@@ -90,17 +90,23 @@ public class StructuralModelRepository : IStructuralModelRepository
         var levelData = new LevelData(_context);
         var gridData = new GridData(_context);
         var materialData = new MaterialData(_context);
+        var wallPropertiesData = new WallPropertiesData(_context);
         var framePropertiesData = new FramePropertiesData(_context);
         var beamData = new BeamData(_context);
         var columnData = new ColumnData(_context);
+        var braceData = new BraceData(_context);
+        var wallData = new WallData(_context);
 
         // fetch data
         var levels = await levelData.GetLevelsAsync(entity.Id);
         var grids = await gridData.GetGridsAsync(entity.Id);
         var materials = await materialData.GetMaterialsAsync(entity.Id);
+        var wallProperties = await wallPropertiesData.GetWallPropertiesAsync(entity.Id);
         var frameProperties = await framePropertiesData.GetFramePropertiesAsync(entity.Id);
         var beams = await beamData.GetBeamsAsync(entity.Id);
         var columns = await columnData.GetColumnsAsync(entity.Id);
+        var braces = await braceData.GetBracesAsync(entity.Id);
+        var walls = await wallData.GetWallsAsync(entity.Id);
 
         // assemble
         var structuralModel = new StructuralModel
@@ -114,12 +120,15 @@ public class StructuralModelRepository : IStructuralModelRepository
             Properties = new PropertiesContainer
             {
                 Materials = materials,
+                WallProperties = wallProperties,
                 FrameProperties = frameProperties
             },
             Elements = new ElementContainer
             {
                 Beams = beams,
-                Columns = columns
+                Columns = columns,
+                Braces = braces,
+                Walls = walls
             }
         };
 
@@ -132,25 +141,51 @@ public class StructuralModelRepository : IStructuralModelRepository
         var levels = model.ModelLayout.Levels;
         var grids = model.ModelLayout.Grids;
         var materials = model.Properties.Materials;
+        var wallProperties = model.Properties.WallProperties ?? new();
+        var floorProperties = model.Properties.FloorProperties ?? new();
         var frameProperties = model.Properties.FrameProperties;
         var beams = model.Elements.Beams;
         var columns = model.Elements.Columns;
+        var braces = model.Elements.Braces;
+        var walls = model.Elements.Walls;
+        var floors = model.Elements.Floors;
+        var footings = model.Elements.IsolatedFootings;
+        var openings = model.Elements.Openings;
+
+        // Sets of valid property IDs — used to null out dangling references
+        var validFramePropertyIds = frameProperties.Select(fp => fp.Id).ToHashSet();
+        var validWallPropertyIds = wallProperties.Select(wp => wp.Id).ToHashSet();
+        var validFloorPropertyIds = floorProperties.Select(fp => fp.Id).ToHashSet();
 
         // instantiate data classes
         var levelData = new LevelData(_context);
         var gridData = new GridData(_context);
         var materialData = new MaterialData(_context);
+        var wallPropertiesData = new WallPropertiesData(_context);
+        var floorPropertiesData = new FloorPropertiesData(_context);
         var framePropertiesData = new FramePropertiesData(_context);
         var beamData = new BeamData(_context);
         var columnData = new ColumnData(_context);
+        var braceData = new BraceData(_context);
+        var wallData = new WallData(_context);
+        var floorData = new FloorData(_context);
+        var footingData = new IsolatedFootingData(_context);
+        var openingData = new OpeningData(_context);
 
-        // save data to context
+        // save data to context (parents before children)
         levelData.SaveLevels(model.Id, levels);
         gridData.SaveGrids(model.Id, grids);
         materialData.SaveMaterials(model.Id, materials);
+        wallPropertiesData.SaveWallProperties(model.Id, wallProperties);
+        floorPropertiesData.SaveFloorProperties(model.Id, floorProperties);
         framePropertiesData.SaveFrameProperties(model.Id, frameProperties);
-        beamData.SaveBeams(model.Id, beams);
-        columnData.SaveColumns(model.Id, columns);
+        beamData.SaveBeams(model.Id, beams, validFramePropertyIds);
+        columnData.SaveColumns(model.Id, columns, validFramePropertyIds);
+        braceData.SaveBraces(model.Id, braces ?? new(), validFramePropertyIds);
+        wallData.SaveWalls(model.Id, walls ?? new(), validWallPropertyIds);
+        floorData.SaveFloors(model.Id, floors ?? new(), validFloorPropertyIds);
+        footingData.SaveIsolatedFootings(model.Id, footings ?? new());
+        openingData.SaveOpenings(model.Id, openings ?? new());
     }
 
     private void RemoveModelEntities(string modelId)
@@ -158,15 +193,30 @@ public class StructuralModelRepository : IStructuralModelRepository
         var levels = _context.Levels.Where(x => x.ModelId == modelId);
         var grids = _context.Grids.Where(x => x.ModelId == modelId);
         var materials = _context.Materials.Where(x => x.ModelId == modelId);
+        var wallProperties = _context.WallProperties.Where(x => x.ModelId == modelId);
+        var floorProperties = _context.FloorProperties.Where(x => x.ModelId == modelId);
         var frameProperties = _context.FrameProperties.Where(x => x.ModelId == modelId);
         var beams = _context.Beams.Where(x => x.ModelId == modelId);
         var columns = _context.Columns.Where(x => x.ModelId == modelId);
+        var braces = _context.Braces.Where(x => x.ModelId == modelId);
+        var walls = _context.Walls.Where(x => x.ModelId == modelId);
+        var floors = _context.Floors.Where(x => x.ModelId == modelId);
+        var footings = _context.Footings.Where(x => x.ModelId == modelId);
+        var openings = _context.Openings.Where(x => x.ModelId == modelId);
 
-        _context.Levels.RemoveRange(levels);
-        _context.Grids.RemoveRange(grids);
-        _context.Materials.RemoveRange(materials);
-        _context.FrameProperties.RemoveRange(frameProperties);
+        // remove children before parents
         _context.Beams.RemoveRange(beams);
         _context.Columns.RemoveRange(columns);
+        _context.Braces.RemoveRange(braces);
+        _context.Walls.RemoveRange(walls);
+        _context.Floors.RemoveRange(floors);
+        _context.Footings.RemoveRange(footings);
+        _context.Openings.RemoveRange(openings);
+        _context.FloorProperties.RemoveRange(floorProperties);
+        _context.WallProperties.RemoveRange(wallProperties);
+        _context.FrameProperties.RemoveRange(frameProperties);
+        _context.Materials.RemoveRange(materials);
+        _context.Grids.RemoveRange(grids);
+        _context.Levels.RemoveRange(levels);
     }
 }
