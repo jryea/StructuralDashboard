@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using StructuralDashboard.Api.Endpoints;
+using StructuralDashboard.Api.Services.Loading;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,10 @@ builder.Services.AddScoped<IStructuralModelRepository, StructuralModelRepository
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IStructuralModelService, StructuralModelService>();
 builder.Services.AddScoped<IStructuralGraphService, StructuralGraphService>();
+builder.Services.AddSingleton<ILoadingBuilder, LoadingBuilder>();
+builder.Services.AddSingleton<ITributaryCalculator, TributaryCalculator>();
+builder.Services.AddSingleton<ILoadAccumulator, LoadAccumulator>();
+builder.Services.AddSingleton<IMemberLoadingService, MemberLoadingService>();
 
 var app = builder.Build();
 
@@ -64,5 +69,6 @@ app.Use(async (context, next) =>
 app.MapProjectEndpoints();
 app.MapStructuralModelEndpoints();
 app.MapGraphEndpoints();
+app.MapLoadingEndpoints();
 
 app.Run();

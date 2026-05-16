@@ -1,4 +1,4 @@
-﻿namespace StructuralDashboard.Api.Domain;
+﻿namespace StructuralDashboard.Api.Domain.Graph;
 
 public class GraphNode
 {

@@ -1,4 +1,4 @@
-﻿using StructuralDashboard.Api.Domain;
+﻿using StructuralDashboard.Api.Domain.Graph;
 using StructuralDashboard.Shared.Contracts;
 
 namespace StructuralDashboard.Api.Services;
