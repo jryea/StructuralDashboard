@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using StructuralDashboard.Api.Domain.Graph;
 using StructuralDashboard.Api.Domain.Loading;
 
@@ -8,6 +10,10 @@ public sealed class LoadAccumulator : ILoadAccumulator
     private const double InchesPerFoot = 12.0;
     private const double ElevationEpsilon = 1e-6;
 
+    private readonly ILogger<LoadAccumulator> _log;
+    public LoadAccumulator(ILogger<LoadAccumulator>? logger = null) =>
+        _log = logger ?? NullLogger<LoadAccumulator>.Instance;
+
     public IReadOnlyDictionary<string, IReadOnlyList<Reaction>> Run(
         IReadOnlyList<LoadableBeam> beams,
         StructuralGraph graph)
@@ -17,6 +23,8 @@ public sealed class LoadAccumulator : ILoadAccumulator
             return EmptyResult();
 
         var beamsByElevation = GroupBeamsByElevationDescending(beams, graph);
+        _log.LogDebug("LoadAccumulator processing {BeamCount} beams across {LevelCount} elevations",
+            beams.Count, beamsByElevation.Count);
 
         foreach (var (elevation, levelBeams) in beamsByElevation)
         {

@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using StructuralDashboard.Api.Domain.Graph;
 using StructuralDashboard.Api.Domain.Loading;
 using StructuralDashboard.Shared.Contracts;
@@ -8,6 +10,10 @@ public sealed class LoadingBuilder : ILoadingBuilder
 {
     private const double InchesPerFoot = 12.0;
     private const double NodeMatchToleranceInches = 0.1;
+
+    private readonly ILogger<LoadingBuilder> _log;
+    public LoadingBuilder(ILogger<LoadingBuilder>? logger = null) =>
+        _log = logger ?? NullLogger<LoadingBuilder>.Instance;
 
     public IReadOnlyList<LoadableBeam> Build(StructuralModel model, StructuralGraph graph)
     {
@@ -34,6 +40,8 @@ public sealed class LoadingBuilder : ILoadingBuilder
             });
         }
 
+        _log.LogDebug("LoadingBuilder built {Count} LoadableBeams from model {ModelId}",
+            loadables.Count, model.Id);
         return loadables;
     }
 

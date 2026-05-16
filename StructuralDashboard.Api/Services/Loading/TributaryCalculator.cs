@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using StructuralDashboard.Api.Domain.Loading;
 using StructuralDashboard.Shared.Contracts;
 
@@ -10,6 +12,10 @@ public sealed class TributaryCalculator : ITributaryCalculator
     private const double MinNeighborDistanceInches = 1.0;
     private const double InchesPerFoot = 12.0;
     private const int FloorSamplePoints = 5;
+
+    private readonly ILogger<TributaryCalculator> _log;
+    public TributaryCalculator(ILogger<TributaryCalculator>? logger = null) =>
+        _log = logger ?? NullLogger<TributaryCalculator>.Instance;
 
     public IReadOnlyList<LinearTributary> CalculateForBeam(LoadableBeam beam, StructuralModel model)
     {
@@ -30,6 +36,7 @@ public sealed class TributaryCalculator : ITributaryCalculator
         var results = new List<LinearTributary>();
         results.AddRange(BuildSide(sourceBeam, beamStart, beamEnd, beamDir, candidates, sideA: true, model));
         results.AddRange(BuildSide(sourceBeam, beamStart, beamEnd, beamDir, candidates, sideA: false, model));
+        _log.LogTrace("Beam {MemberId}: {Count} tributaries", beam.MemberId, results.Count);
         return results;
     }
 
