@@ -157,9 +157,9 @@ public static class ModelFixtures
         // L3 framing
         // Girder G at L3, x=0..240, y=60 (top)
         model.Elements.Beams.Add(NewBeam("G", x1: 0, y1: 60, x2: 240, y2: 60, z: 240, levelId: "L3"));
-        // Joist J at L3, x=120, y=0..120 → its endpoints land on Girder's mid-span (120, 60)
-        // and on a wall at y=0.
-        model.Elements.Beams.Add(NewBeam("J", x1: 120, y1: 0, x2: 120, y2: 120, z: 240, levelId: "L3"));
+        // Joist J at L3, x=120, y=0..60 → its END lands ON the girder's mid-span at (120, 60).
+        // Its other end at (120, 0) needs a support, provided by a wall.
+        model.Elements.Beams.Add(NewBeam("J", x1: 120, y1: 0, x2: 120, y2: 60, z: 240, levelId: "L3"));
 
         // Walls support the joist's far end and the girder at its endpoints
         model.Elements.Walls.Add(NewWall("W-joist-end", x1: 0, y1: 0, x2: 240, y2: 0,
@@ -173,6 +173,32 @@ public static class ModelFixtures
         model.Elements.Floors.Add(NewFloor("F-L3", levelId: "L3", surfaceLoadId: SurfaceLoad50,
             xs: new[] { 0.0, 240, 240, 0 }, ys: new[] { 0.0, 0, 120, 120 }));
 
+        return model;
+    }
+
+    /// <summary>
+    /// Two-level model with columns transferring load from L3 down to L2.
+    /// Used to verify the LoadAccumulator propagates reactions through columns
+    /// from a higher beam to a lower beam.
+    ///
+    ///   BU at z=240, x=0..240, y=60
+    ///   BL at z=120, x=0..240, y=60  (directly under BU)
+    ///   Columns at (0,60) and (240,60), each running z=0..240 (passes through z=120)
+    /// </summary>
+    public static StructuralModel TwoLevelColumnStack()
+    {
+        var model = NewBaseModel();
+        model.ModelLayout.Levels.Add(new Level { Id = "L3", Name = "Level 3", Elevation = 240 });
+
+        model.Elements.Beams.Add(NewBeam("BU", x1: 0, y1: 60, x2: 240, y2: 60, z: 240, levelId: "L3"));
+        model.Elements.Beams.Add(NewBeam("BL", x1: 0, y1: 60, x2: 240, y2: 60, z: 120, levelId: LevelL2));
+
+        model.Elements.Columns.Add(NewColumn("C-left", x: 0, y: 60, zBottom: 0, zTop: 240));
+        model.Elements.Columns.Add(NewColumn("C-right", x: 240, y: 60, zBottom: 0, zTop: 240));
+
+        // Floor at L3 (over BU). Not used for tributary in accumulator tests, but harmless.
+        model.Elements.Floors.Add(NewFloor("F-L3", levelId: "L3", surfaceLoadId: SurfaceLoad50,
+            xs: new[] { 0.0, 240, 240, 0 }, ys: new[] { 0.0, 0, 120, 120 }));
         return model;
     }
 
